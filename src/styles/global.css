@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f5f0eb;
+  --foreground: #2c2825;
+  --card: #eee8e1;
+  --card-foreground: #2c2825;
+  --muted: #d6cfc7;
+  --muted-foreground: #78716c;
+  --border: #d6cfc7;
+  --accent: #a39e97;
+  --accent-foreground: #2c2825;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
