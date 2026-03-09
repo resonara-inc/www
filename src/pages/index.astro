@@ -1,157 +1,477 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import heroImage from "../assets/ResonaraFull.jpg";
-import logoImage from "../assets/ResonaraLogo.png";
+import DarkLayout from "../layouts/DarkLayout.astro";
+import { Image } from "astro:assets";
+import ResonaraFull from "../assets/ResonaraFull.jpg";
+import ResonaraFootball from "../assets/ResonaraFootball.png";
 ---
 
-<Layout title="Resonara — Sound Nirvana">
-  <!-- Header -->
-  <header class="flex items-center justify-between px-8 py-6 md:px-16 lg:px-24">
-    <div class="flex items-center gap-3">
-      <img src={logoImage.src} width="32" height="32" alt="Resonara logo" class="h-8 w-8" loading="eager" />
-      <span class="text-sm font-medium tracking-widest uppercase text-foreground">Resonara</span>
+<DarkLayout title="Resonara — Ancient Frequency. Modern Proof." description="Ten minutes of Resonara. Eight hours of everything else.">
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Ancient Frequency &nbsp;·&nbsp; Modern Proof</p>
+      <h1 class="hero-title">Ten minutes of <span>Resonara</span></h1>
+      <p class="hero-subtitle">Eight hours of everything else</p>
     </div>
-    <nav>
-      <a href="/roi-calculator" class="text-xs font-medium tracking-widest uppercase text-muted-foreground hover:text-foreground transition">ROI Calculator</a>
-    </nav>
-  </header>
+    <div class="scroll-cue">
+      <span>Scroll to sharpen</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-  <main>
-    <!-- ═══════════ HERO ═══════════ -->
-    <section class="px-8 pt-16 pb-24 md:px-16 lg:px-24 xl:pt-24 xl:pb-32">
-      <div class="mx-auto max-w-6xl">
-        <div class="grid items-center gap-16 lg:grid-cols-2">
-          <!-- Copy -->
-          <div class="max-w-xl">
-            <h1 class="text-balance text-5xl font-semibold leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">Sound Nirvana</h1>
-            <p class="mt-4 text-lg tracking-wide text-muted-foreground md:text-xl">Silence of Mind. Science of Sound.</p>
-            <p class="mt-8 max-w-md text-base leading-relaxed text-muted-foreground">
-              Resonara explores the intersection of acoustics, material science, and focused attention. Each bowl is tuned, measured, and finished by hand in small batches.
-            </p>
-          </div>
+  <!-- ═══════════ WOODCUTTER SPLIT ═══════════ -->
+  <section class="split-section">
+    <div class="split-wrap">
+      <div class="img-panel img-panel--woodcutter has-img reveal-left">
+        <Image src={ResonaraFull} alt="Resonara singing bowl — ancient frequency, precision engineered" class="panel-img" />
+        <div class="img-overlay img-overlay--right"></div>
+      </div>
+      <div class="text-panel text-panel--right">
+        <p class="label reveal">The Woodcutter's Secret</p>
+        <h2 class="section-title reveal d1">Every morning, before the first swing,<br />he sharpens the axe.</h2>
+        <p class="body-p reveal d2">Not because he doubts his strength. Not because the forest intimidates him. But because he understands something most people never learn —</p>
+        <div class="pull-quote reveal d3"><p><em>his work begins before the work begins.</em></p></div>
+        <div class="principle-trio reveal d4">
+          <p><span>The stone sharpens the axe.</span><br />Resonara sharpens your mind.<br /><span>Ten minutes. Same principle. Different instrument.</span></p>
+          <p class="principle-sub">Stone on blade. Silence and intention.</p>
+        </div>
+        <p class="body-p reveal d4">Then eight hours of clean, effortless cutting.</p>
+      </div>
+    </div>
+  </section>
 
-          <!-- Image -->
-          <div class="overflow-hidden rounded-lg">
-            <img src={heroImage.src} width={heroImage.width} height={heroImage.height} alt="A Resonara singing bowl resting on a stone surface" class="h-auto w-full object-cover" loading="eager" />
-          </div>
+  <div class="ornament reveal"><span>✦</span></div>
+
+  <!-- ═══════════ MIDDLE ═══════════ -->
+  <section class="middle-section">
+    <div class="middle-inner">
+      <p class="bold-line reveal">We live in a world that worships the swing.</p>
+      <p class="body-p reveal d1">
+        More meetings. More decisions. More output. More hustle. We celebrate the person who starts earliest and stops latest. We have built an entire culture around the axe in motion.
+      </p>
+      <p class="nobody reveal d2">Nobody talks about the sharpening.</p>
+      <p class="body-p reveal d3">
+        And so we swing. Day after day. With a blunter blade than yesterday. Wondering why the same tree takes longer. Wondering why we are more tired with less to show for it.
+      </p>
+    </div>
+  </section>
+
+  <div class="ornament reveal"><span>✦</span></div>
+
+  <!-- ═══════════ MEDITATOR SPLIT ═══════════ -->
+  <section class="split-section">
+    <div class="split-wrap">
+      <div class="text-panel text-panel--left">
+        <p class="bold-line reveal">Your brain is the axe.</p>
+        <p class="body-p reveal d1">The tree is everything — your business, your relationships, your ambitions, the problems only you can solve.</p>
+        <p class="body-p reveal d2">Ten minutes with Resonara is the sharpening. Calibrated frequency. Verified acoustic protocol. Ancient wisdom, now measurable.</p>
+        <div class="pull-quote reveal d3">
+          <p>
+            Not meditation you have to figure out. Not silence you have to force. Just the right sound, at the right frequency, doing what it has always done —<br /><br /><em
+              >returning you to centre before the world pulls you to the edges.</em>
+          </p>
         </div>
       </div>
-    </section>
-
-    <!-- ═══════════ DIVIDER ═══════════ -->
-    <div class="mx-auto max-w-6xl px-8 md:px-16 lg:px-24">
-      <hr class="border-border" />
-    </div>
-
-    <!-- ═══════════ BENEFITS ═══════════ -->
-    <section class="px-8 py-24 md:px-16 lg:px-24 xl:py-32">
-      <div class="mx-auto max-w-6xl">
-        <p class="text-xs font-medium tracking-widest uppercase text-muted-foreground">What we investigate</p>
-        <h2 class="mt-3 text-balance text-3xl font-semibold tracking-tight text-foreground md:text-4xl">Benefits of Singing Bowls</h2>
-
-        <div class="mt-16 grid gap-8 md:grid-cols-3">
-          <!-- Card 1 -->
-          <div class="rounded-lg border border-border bg-card p-8">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-muted text-muted-foreground">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 10v3"></path>
-                <path d="M6 6v11"></path>
-                <path d="M10 3v18"></path>
-                <path d="M14 8v7"></path>
-                <path d="M18 5v13"></path>
-                <path d="M22 10v3"></path>
-              </svg>
-            </span>
-            <h3 class="mt-6 text-lg font-medium text-card-foreground">Acoustic Resonance</h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Preliminary research explores how sustained tonal frequencies may support focused listening and a quieter mental environment.
-            </p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="rounded-lg border border-border bg-card p-8">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-muted text-muted-foreground">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                <path d="M2 12h20"></path>
-              </svg>
-            </span>
-            <h3 class="mt-6 text-lg font-medium text-card-foreground">Material Integrity</h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">
-              We investigate how alloy composition and forging technique influence harmonic overtones, sustain length, and tonal warmth across each bowl.
-            </p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="rounded-lg border border-border bg-card p-8">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-muted text-muted-foreground">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                <path d="m9 12 2 2 4-4"></path>
-              </svg>
-            </span>
-            <h3 class="mt-6 text-lg font-medium text-card-foreground">Focused Attention</h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Ongoing studies explore whether rhythmic, predictable sound patterns may help listeners sustain attention during quiet, single-task work.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════ DIVIDER ═══════════ -->
-    <div class="mx-auto max-w-6xl px-8 md:px-16 lg:px-24">
-      <hr class="border-border" />
-    </div>
-
-    <!-- ═══════════ TESTIMONIALS ═══════════ -->
-    <section class="px-8 py-24 md:px-16 lg:px-24 xl:py-32">
-      <div class="mx-auto max-w-6xl">
-        <p class="text-xs font-medium tracking-widest uppercase text-muted-foreground">What others say</p>
-        <h2 class="mt-3 text-balance text-3xl font-semibold tracking-tight text-foreground md:text-4xl">Testimonials</h2>
-
-        <div class="mt-16 grid gap-8 md:grid-cols-2">
-          <!-- Quote 1 -->
-          <blockquote class="rounded-lg border border-border bg-card p-8">
-            <p class="text-base leading-relaxed text-card-foreground">
-              "I keep one on my desk. Five minutes with it before deep work and my mind quiets down noticeably. No magic — just a useful tool for focus."
-            </p>
-            <footer class="mt-6 flex items-center gap-3">
-              <div class="h-8 w-8 rounded-full bg-muted"></div>
-              <div>
-                <p class="text-sm font-medium text-card-foreground">Elena Voss</p>
-                <p class="text-xs text-muted-foreground">Industrial Designer</p>
-              </div>
-            </footer>
-          </blockquote>
-
-          <!-- Quote 2 -->
-          <blockquote class="rounded-lg border border-border bg-card p-8">
-            <p class="text-base leading-relaxed text-card-foreground">
-              "The sustain on these bowls is remarkably even. As an audio engineer, I appreciate that kind of tonal consistency — it speaks to careful material selection."
-            </p>
-            <footer class="mt-6 flex items-center gap-3">
-              <div class="h-8 w-8 rounded-full bg-muted"></div>
-              <div>
-                <p class="text-sm font-medium text-card-foreground">Marcus Tanaka</p>
-                <p class="text-xs text-muted-foreground">Audio Engineer</p>
-              </div>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="px-8 py-12 md:px-16 lg:px-24">
-    <div class="mx-auto max-w-6xl">
-      <hr class="mb-8 border-border" />
-      <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
-        <span class="text-xs font-medium tracking-widest uppercase text-muted-foreground">Resonara</span>
-        <p class="text-xs text-muted-foreground">Sound instruments, made carefully.</p>
+      <div class="img-panel img-panel--meditator has-img reveal-right">
+        <Image src={ResonaraFootball} alt="Elite athlete — Resonara sharpens focus before the match" class="panel-img" />
+        <div class="img-overlay img-overlay--left"></div>
       </div>
     </div>
-  </footer>
-</Layout>
+  </section>
+
+  <!-- ═══════════ WORLD'S FIRST ═══════════ -->
+  <div class="worlds-first reveal">
+    <p class="wf-label">A New Category</p>
+    <p class="wf-claim">The world's first <span>automated sound therapy system.</span></p>
+    <p class="wf-sub">Used in professional cricket, football, corporate wellness, and luxury spas worldwide.</p>
+    <p class="wf-dots">Verified by EEG &nbsp;·&nbsp; USPTO Patent Filed &nbsp;·&nbsp; Acoustically Certified</p>
+  </div>
+
+  <!-- ═══════════ PROOF BAND ═══════════ -->
+  <div class="proof-band reveal">
+    <p>Trusted by athletes, founders and executives across four continents</p>
+    <p class="proof-cities">Singapore &nbsp;·&nbsp; Dubai &nbsp;·&nbsp; London &nbsp;·&nbsp; New York &nbsp;·&nbsp; San Francisco</p>
+  </div>
+
+  <!-- ═══════════ CLOSING ═══════════ -->
+  <section class="closing">
+    <div class="closing-inner">
+      <p class="closing-main reveal">Sharpen first.<br />Then swing.</p>
+      <p class="closing-sub reveal d1">Ten minutes of Resonara.<br />Eight hours of everything else.</p>
+      <div class="divider-line reveal d2"></div>
+      <a href="/roi-calculator" class="cta-btn reveal d3"><span>Your ten minutes start here &nbsp;→</span></a>
+    </div>
+  </section>
+</DarkLayout>
+
+<style>
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.08) 0%, transparent 65%), linear-gradient(to bottom, var(--dark-mid), var(--dark));
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center 60%, rgba(201, 168, 76, 0.04) 0%, transparent 70%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+    letter-spacing: 0.42em;
+    color: var(--gold);
+    margin-bottom: 1.6rem;
+    opacity: 0.95;
+  }
+  .hero-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(2rem, 6vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--parchment);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+  .hero-title span {
+    color: var(--gold);
+  }
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.65rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-pale);
+    opacity: 0.88;
+    letter-spacing: 0.05em;
+  }
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 2.6s ease-out both;
+  }
+  .scroll-cue span {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.75rem, 1.2vw, 0.88rem);
+    letter-spacing: 0.42em;
+    color: var(--gold);
+    opacity: 0.75;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: scaleY(0.6) translateY(-8px);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scaleY(1) translateY(4px);
+    }
+  }
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  /* ── SPLIT SECTIONS ── */
+  .split-section {
+    position: relative;
+    overflow: hidden;
+    background: var(--dark-mid);
+  }
+  .split-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    align-items: stretch;
+  }
+  @media (max-width: 800px) {
+    .split-wrap {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .img-panel {
+    position: relative;
+    overflow: hidden;
+    min-height: 50vh;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.06), var(--dark-mid));
+  }
+  .img-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(201, 168, 76, 0.1);
+  }
+  /* Decorative concentric ring placeholder for images */
+  .img-panel::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    box-shadow:
+      0 0 0 40px rgba(201, 168, 76, 0.04),
+      0 0 0 80px rgba(201, 168, 76, 0.025);
+  }
+  .panel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+  .has-img::after {
+    display: none;
+  }
+  .img-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .img-overlay--right {
+    background: linear-gradient(to right, transparent, rgba(14, 12, 9, 0.5));
+  }
+  .img-overlay--left {
+    background: linear-gradient(to left, transparent, rgba(14, 12, 9, 0.5));
+  }
+  @media (max-width: 800px) {
+    .img-overlay--right,
+    .img-overlay--left {
+      background: linear-gradient(to bottom, transparent, rgba(14, 12, 9, 0.65));
+    }
+  }
+
+  .text-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+  }
+  .text-panel--right {
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.04), transparent);
+  }
+  .text-panel--left {
+    background: linear-gradient(225deg, rgba(201, 168, 76, 0.04), transparent);
+  }
+
+  /* ── TEXT ELEMENTS ── */
+  .label {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+    letter-spacing: 0.38em;
+    color: var(--gold);
+    opacity: 0.9;
+    margin-bottom: 1.6rem;
+  }
+  .section-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.65rem);
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    margin-bottom: 2rem;
+    line-height: 1.35;
+  }
+  .bold-line {
+    font-family: "Cinzel", serif;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 600;
+    color: var(--parchment);
+    letter-spacing: 0.05em;
+    margin: 2rem 0 1rem;
+  }
+  .nobody {
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+    color: var(--gold-pale);
+    font-style: italic;
+    letter-spacing: 0.04em;
+    margin: 2rem 0;
+  }
+  .principle-trio {
+    margin: 2rem 0;
+    padding: 1.8rem 0;
+    border-top: 1px solid rgba(201, 168, 76, 0.2);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  }
+  .principle-trio p {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.95rem, 1.7vw, 1.15rem);
+    line-height: 2.3;
+    letter-spacing: 0.06em;
+    color: var(--gold-pale);
+  }
+  .principle-trio p span {
+    color: var(--gold);
+  }
+  .principle-sub {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.82rem, 1.3vw, 0.98rem);
+    letter-spacing: 0.22em;
+    color: rgba(201, 168, 76, 0.6);
+    font-style: italic;
+    margin-top: 0.8rem;
+  }
+
+  /* ── MIDDLE SECTION ── */
+  .middle-section {
+    background: var(--dark);
+    padding: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 4rem);
+  }
+  .middle-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* ── WORLD'S FIRST ── */
+  .worlds-first {
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(201, 168, 76, 0.03));
+    border-top: 1px solid rgba(201, 168, 76, 0.25);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    padding: 3rem clamp(2rem, 6vw, 5rem);
+    text-align: center;
+  }
+  .wf-label {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.82rem, 1.4vw, 0.98rem);
+    letter-spacing: 0.42em;
+    color: var(--gold);
+    opacity: 0.85;
+    margin-bottom: 1.2rem;
+  }
+  .wf-claim {
+    font-family: "Cinzel", serif;
+    font-size: clamp(1.1rem, 2.4vw, 1.65rem);
+    font-weight: 600;
+    color: var(--parchment);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+  }
+  .wf-claim span {
+    color: var(--gold);
+  }
+  .wf-sub {
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    font-style: italic;
+    color: rgba(250, 245, 233, 0.7);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+  .wf-dots {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.78rem, 1.2vw, 0.92rem);
+    letter-spacing: 0.3em;
+    color: rgba(201, 168, 76, 0.65);
+    margin-top: 1.5rem;
+  }
+
+  /* ── PROOF BAND ── */
+  .proof-band {
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    background: rgba(201, 168, 76, 0.03);
+    padding: 2rem clamp(1.5rem, 5vw, 4rem);
+    text-align: center;
+  }
+  .proof-band p {
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    color: rgba(201, 168, 76, 0.8);
+    letter-spacing: 0.14em;
+    font-style: italic;
+  }
+  .proof-cities {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.72rem, 1.2vw, 0.85rem);
+    letter-spacing: 0.32em;
+    color: rgba(201, 168, 76, 0.42);
+    margin-top: 0.6rem;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    text-align: center;
+    padding: clamp(4rem, 10vw, 9rem) clamp(2rem, 5vw, 4rem);
+    background: linear-gradient(to bottom, var(--dark-mid), var(--dark));
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.05) 0%, transparent 68%);
+  }
+  .closing-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .closing-main {
+    font-family: "Cinzel", serif;
+    font-size: clamp(1.5rem, 5vw, 3.2rem);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.07em;
+    line-height: 1.35;
+    margin-bottom: 1.2rem;
+  }
+  .closing-sub {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--gold-pale);
+    opacity: 0.82;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+  .divider-line {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.45;
+    margin: 0 auto 3rem;
+  }
+</style>
