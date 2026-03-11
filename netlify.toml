@@ -3,9 +3,15 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "24"
 
 # Hashed assets (JS, CSS, images processed by Astro) — cache forever, no revalidation
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Legacy /assets/* path — same immutable rule
 [[headers]]
   for = "/assets/*"
   [headers.values]
