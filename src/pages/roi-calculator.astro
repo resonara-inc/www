@@ -278,6 +278,15 @@ import DarkLayout from "../layouts/DarkLayout.astro";
     border-color: var(--foreground);
     color: var(--background);
   }
+
+  /* Tighten table cells on mobile */
+  @media (max-width: 540px) {
+    .roi-calculator table th,
+    .roi-calculator table td {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
 </style>
 
 <script>

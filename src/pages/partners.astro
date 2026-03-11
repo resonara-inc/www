@@ -197,6 +197,16 @@ import ResonaraDubai from "../assets/ResonaraDubai.png";
     padding: clamp(6rem, 10vw, 9rem) clamp(2rem, 6vw, 5rem) clamp(4rem, 6vw, 5rem);
     max-width: 640px;
   }
+  @media (max-width: 800px) {
+    .hero-content {
+      text-align: center;
+      max-width: 100%;
+      padding-top: clamp(5rem, 15vw, 7rem);
+    }
+    .hero-cta-row {
+      justify-content: center;
+    }
+  }
   .hero-eyebrow {
     font-family: "Cinzel", serif;
     font-size: clamp(0.7rem, 1.5vw, 0.88rem);
@@ -345,7 +355,7 @@ import ResonaraDubai from "../assets/ResonaraDubai.png";
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     z-index: 0;
   }
