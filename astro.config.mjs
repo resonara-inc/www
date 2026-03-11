@@ -1,10 +1,11 @@
-import { defineConfig, passthroughImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   output: "static",
   image: {
-    service: passthroughImageService(),
+    // Sharp is the default — converts to WebP, resizes, compresses at build time
+    quality: 75,
   },
   integrations: [
     tailwind({
