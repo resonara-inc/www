@@ -25,7 +25,19 @@ const navLinks = [
     <title>{title}</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Inter:wght@300;400;500;600&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Inter:wght@300;400;500;600&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <nav>
@@ -235,7 +247,7 @@ const navLinks = [
     font-family: "Cinzel", serif;
     font-size: clamp(0.65rem, 1.2vw, 0.82rem);
     letter-spacing: 0.25em;
-    color: rgba(201, 168, 76, 0.35);
+    color: rgba(201, 168, 76, 0.7);
     line-height: 1.8;
   }
 
