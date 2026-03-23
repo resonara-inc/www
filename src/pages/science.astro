@@ -4,7 +4,21 @@ import { Image } from "astro:assets";
 import BowlCertificateFinal from "../assets/BowlCertificateFinal.png";
 import ResonaraBowlCraft from "../assets/ResonaraBowlCraft.png";
 import ResonaraBowlMallet from "../assets/ResonaraBowlMallet.png";
+import ResonaraBowlMalletstrike from "../assets/ResonaraBowlMalletstrike.mp4";
 ---
+
+<!-- ═══════════ STRIKE VIDEO ═══════════ -->
+<section class="video-section">
+  <video
+    src="/ResonaraBowlMalletstrike.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    class="strike-video"
+  ></video>
+</section>
+
 
 <DarkLayout title="Resonara — The Science" description="Frequency is not mysticism. It is mathematics. The acoustic science behind Resonara.">
   <!-- ═══════════ HERO ═══════════ -->
@@ -194,6 +208,19 @@ import ResonaraBowlMallet from "../assets/ResonaraBowlMallet.png";
 
 <style>
   /* ── HERO ── */
+.video-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.strike-video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
   .hero {
     min-height: 58vh;
     display: flex;
