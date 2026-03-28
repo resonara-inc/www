@@ -206,6 +206,24 @@ import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
 
 <style>
   /* ── HERO ── */
+.hero {
+  padding: clamp(5rem, 10vh, 7rem) 2rem 2rem;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--dark) 0%, var(--dark-mid) 100%);
+}
+.hero .hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero .cert-headline {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero .rni-heading {
+  text-align: center;
+}
 .video-section {
   width: 100%;
   max-width: 1200px;
@@ -275,6 +293,12 @@ import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
 .hero-bottom {
   height: clamp(22rem, 56vh, 38rem);
 }
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 2rem;
+}
 
 @media (max-width: 768px) {
   .hero-top {
@@ -291,9 +315,12 @@ import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
     font-size: clamp(0.65rem, 3.2vw, 0.85rem);
     letter-spacing: 0.12em;
   }
-  .hero-content {
-    padding: 0.5rem 1.5rem 0;
-  }
+  ..hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 2rem;
+}
   .hero-title {
     font-size: clamp(1.4rem, 7.5vw, 2.2rem);
   }
