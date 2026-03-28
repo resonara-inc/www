@@ -136,8 +136,8 @@ const navLinks = [
     overflow-x: hidden;
   }
 /* Clears fixed nav on all pages */
-body > section:first-of-type,
-main > section:first-of-type {
+body > section:first-of-type:not(.hero),
+main > section:first-of-type:not(.hero) {
   padding-top: clamp(5rem, 9vh, 7rem);
 }
 
