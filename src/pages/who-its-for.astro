@@ -13,23 +13,28 @@ import CorporateGirl88 from "../assets/CorporateGirl88.png";
 
 <DarkLayout title="Resonara — Who It's For" description="The founder. The executive. The performer. The elite athlete. Built for people who cannot afford to be dull.">
   <!-- ═══════════ HERO ═══════════ -->
-  <section class="hero">
-    <div class="hero-content">
-      <p class="hero-eyebrow reveal">The People Resonara Is Built For</p>
-      <h1 class="hero-title reveal d1">You already know<br /><span>what it costs to stop.</span></h1>
-      <p class="hero-sub reveal d2">
-        The founder. The executive. The performer. The elite athlete. They live at different edges — but they share one problem. The swing never stops. The sharpening never starts.
-      </p>
-      <nav class="persona-nav reveal d3">
-        <a href="#optimiser">The Optimiser</a>
-        <a href="#executive">The Executive</a>
-        <a href="#performer">The Performer</a>
-        <a href="#founder">The Founder</a>
-        <a href="#athlete">The Athlete</a>
-        <a href="#leader">The Leader</a>
-      </nav>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow reveal">The People Resonara Is Built For</p>
+    <h1 class="hero-title reveal d1">
+      You already know.<br /><span>You cannot stop.</span>
+    </h1>
+    <p class="hero-pause reveal d2">But can you pause — ten minutes, daily?</p>
+    <p class="hero-sub reveal d3">
+      The founder. The executive. The performer. The elite athlete.
+      They live at different edges — but they share one problem.
+      The swing never stops. The sharpening never starts.
+    </p>
+    <nav class="persona-nav reveal d4">
+      <a href="#optimiser">The Optimiser</a>
+      <a href="#executive">The Executive</a>
+      <a href="#performer">The Performer</a>
+      <a href="#founder">The Founder</a>
+      <a href="#athlete">The Athlete</a>
+      <a href="#leader">The Leader</a>
+    </nav>
+  </div>
+</section>
 
   <!-- ═══════════ 1. THE FOUNDER ═══════════ -->
   <section class="persona-card right" id="founder">
@@ -241,7 +246,16 @@ import CorporateGirl88 from "../assets/CorporateGirl88.png";
     max-width: 640px;
     margin: 0 auto 2.5rem;
   }
-
+.hero-pause {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  font-style: italic;
+  margin-bottom: 2rem;
+  opacity: 0.92;
+}
   /* ── PERSONA NAV (in-page) ── */
   .persona-nav {
     display: flex;
