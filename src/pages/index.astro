@@ -195,11 +195,15 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
 /* ── EYEBROW BLOCK — top of page ──
    Frosted dark band ONLY behind this text */
 .hero-top {
-  width: 100%;
-  padding: clamp(5rem, 11vh, 7.5rem) 2rem 2rem;
+  width: auto;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: clamp(5rem, 11vh, 7.5rem) 3rem 1.8rem;
   background: rgba(10, 8, 5, 0.52);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0 0 2px 2px;
+  align-self: center;
 }
 
 .hero-eyebrow {
@@ -225,15 +229,18 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
 /* ── TITLE BLOCK — floats in clear image zone ──
    Its own frosted band, separated from eyebrow */
 .hero-content {
+  width: auto;
+  max-width: 780px;
+  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.6rem 2rem 1.8rem;
-  margin-top: 2rem;
+  padding: 1.4rem 3rem 1.6rem;
+  margin-top: 1.8rem;
   background: rgba(10, 8, 5, 0.48);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  width: 100%;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 2px;
 }
 
 .hero-title {
@@ -269,7 +276,15 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
   .hero-top {
-    padding: clamp(4.5rem, 9vh, 6rem) 1.4rem 1.6rem;
+    width: 92%;
+    max-width: 92%;
+    padding: clamp(4.5rem, 9vh, 6rem) 1.6rem 1.4rem;
+  }
+  .hero-content {
+    width: 92%;
+    max-width: 92%;
+    padding: 1.1rem 1.6rem 1.3rem;
+    margin-top: 1rem;
   }
   .hero-eyebrow {
     font-size: clamp(0.9rem, 4.5vw, 1.3rem);
@@ -279,10 +294,6 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
   .hero-eyebrow-sub {
     font-size: clamp(0.7rem, 3.5vw, 0.9rem);
     letter-spacing: 0.14em;
-  }
-  .hero-content {
-    margin-top: 1.2rem;
-    padding: 1.2rem 1.4rem 1.4rem;
   }
   .hero-title {
     font-size: clamp(1.6rem, 8vw, 2.6rem);
