@@ -259,9 +259,26 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
   letter-spacing: 0.05em;
 }
 
-/* SPACER — pushes title up slightly from dead centre */
+/* SPACER — pushes title up from dead centre */
 .hero-bottom {
   height: clamp(3rem, 8vh, 6rem);
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+    padding-bottom: 0;
+  }
+  .hero-bottom {
+    height: clamp(14rem, 42vh, 22rem);
+  }
+  .hero-title {
+    font-size: clamp(1.6rem, 8vw, 2.4rem);
+  }
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  }
 }
 
 /* SCROLL CUE */
