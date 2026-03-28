@@ -11,8 +11,13 @@ import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
   <!-- ═══════════ HERO ═══════════ -->
   <section class="hero">
     <div class="hero-content">
-    <p class="cert-headline">Chemistry of the bowl. Physics of sound.<br /> Mathematics of frequency. Biology of the mind.<br /></p>
-      <h2 class="rni-heading reveal d1"><span>Stillness of the whole.</span></h2>
+   <p class="cert-headline">
+  <span class="phrase">Chemistry of the bowl.</span><br />
+  <span class="phrase">Physics of sound.</span><br />
+  <span class="phrase">Mathematics of frequency.</span><br />
+  <span class="phrase">Biology of the mind.</span>
+</p>
+<h2 class="rni-heading reveal d1"><span>Stillness of the whole.</span></h2>
       </div>
   </section>
 
@@ -338,6 +343,17 @@ import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
   }
   .hero .rni-heading {
     font-size: clamp(1.1rem, 6vw, 1.6rem);
+  }
+/* Each phrase stays on one line — mobile only */
+@media (max-width: 768px) {
+  .hero .cert-headline {
+    font-size: clamp(0.78rem, 3.6vw, 0.95rem);
+    letter-spacing: 0.02em;
+    line-height: 2.3;
+  }
+  .hero .cert-headline .phrase {
+    display: inline-block;
+    white-space: nowrap;
   }
 }
 
