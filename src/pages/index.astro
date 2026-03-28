@@ -41,7 +41,7 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
 </div>
 
     <div class="hero-content">
-      <h1 class="hero-title">Ten minutes of</span>Resonara</span></h1>
+      <h1 class="hero-title">Ten minutes of&nbsp;<span>Resonara</span></h1>
       <p class="hero-subtitle">Eight hours of everything else</p>
     </div>
 
@@ -195,15 +195,14 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
 /* ── EYEBROW BLOCK — top of page ──
    Frosted dark band ONLY behind this text */
 .hero-top {
-  width: auto;
-  max-width: 780px;
-  margin: 0 auto;
-  padding: clamp(5rem, 11vh, 7.5rem) 3rem 1.8rem;
+  width: fit-content;
+  min-width: 500px;
+  max-width: 820px;
+  align-self: center;
+  padding: clamp(5rem, 11vh, 7.5rem) 3.5rem 1.8rem;
   background: rgba(10, 8, 5, 0.52);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 0 0 2px 2px;
-  align-self: center;
 }
 
 .hero-eyebrow {
@@ -229,28 +228,30 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
 /* ── TITLE BLOCK — floats in clear image zone ──
    Its own frosted band, separated from eyebrow */
 .hero-content {
-  width: auto;
-  max-width: 780px;
+  width: fit-content;
+  min-width: 500px;
+  max-width: 820px;
   align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.4rem 3rem 1.6rem;
+  padding: 1.4rem 3.5rem 1.6rem;
   margin-top: 1.8rem;
   background: rgba(10, 8, 5, 0.48);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 2px;
+  white-space: nowrap;
 }
 
 .hero-title {
   font-family: "Cinzel", serif;
-  font-size: clamp(1.5rem, 3.5vw, 3.2rem);
+  font-size: clamp(1.5rem, 3.2vw, 3.2rem);
   font-weight: 400;
   line-height: 1.18;
   color: #faf5e9;
   letter-spacing: 0.06em;
   margin: 0 0 0.3rem;
+  white-space: nowrap;
 }
 .hero-title span {
   color: #c9a84c;
@@ -276,30 +277,33 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
   .hero-top {
-    width: 92%;
-    max-width: 92%;
-    padding: clamp(4.5rem, 9vh, 6rem) 1.6rem 1.4rem;
+    width: 94%;
+    min-width: unset;
+    max-width: 94%;
+    align-self: center;
+    padding: clamp(4.5rem, 9vh, 6rem) 1.4rem 1.4rem;
   }
   .hero-content {
-    width: 92%;
-    max-width: 92%;
-    padding: 1.1rem 1.6rem 1.3rem;
+    width: 94%;
+    min-width: unset;
+    max-width: 94%;
+    align-self: center;
+    padding: 1.1rem 1.4rem 1.3rem;
     margin-top: 1rem;
+    white-space: normal;
+  }
+  .hero-title {
+    font-size: clamp(1.4rem, 7vw, 2.4rem);
+    white-space: normal;
   }
   .hero-eyebrow {
-    font-size: clamp(0.9rem, 4.5vw, 1.3rem);
-    letter-spacing: 0.18em;
+    font-size: clamp(0.85rem, 4vw, 1.2rem);
+    letter-spacing: 0.15em;
     line-height: 1.6;
   }
   .hero-eyebrow-sub {
-    font-size: clamp(0.7rem, 3.5vw, 0.9rem);
-    letter-spacing: 0.14em;
-  }
-  .hero-title {
-    font-size: clamp(1.6rem, 8vw, 2.6rem);
-  }
-  .hero-subtitle {
-    font-size: clamp(1rem, 4.5vw, 1.3rem);
+    font-size: clamp(0.7rem, 3.2vw, 0.9rem);
+    letter-spacing: 0.12em;
   }
   .hero-bottom {
     min-height: clamp(14rem, 42vh, 22rem);
