@@ -10,16 +10,18 @@ import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
 <DarkLayout title="Resonara — The Science" description="Frequency is not mysticism. It is mathematics. The acoustic science behind Resonara.">
   <!-- ═══════════ HERO ═══════════ -->
   <section class="hero">
-    <div class="hero-content">
-   <p class="cert-headline">
-  <span class="phrase">Chemistry of the bowl.</span><br />
-  <span class="phrase">Physics of sound.</span><br />
-  <span class="phrase">Mathematics of frequency.</span><br />
-  <span class="phrase">Biology of the mind.</span>
-</p>
-<h2 class="rni-heading reveal d1"><span>Stillness of the whole.</span></h2>
-      </div>
-  </section>
+  <div class="hero-content">
+    <p class="cert-headline">
+      Chemistry of the bowl.<br />
+      Physics of sound.<br />
+      Mathematics of frequency.<br />
+      Biology of the mind.
+    </p>
+    <h2 class="rni-heading reveal d1">
+      <span>Stillness of the whole.</span>
+    </h2>
+  </div>
+</section>
 
 <!-- ═══════════ STRIKE VIDEO ═══════════ -->
 <section class="video-section">
@@ -222,13 +224,33 @@ import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
   text-align: center;
 }
 .hero .cert-headline {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  color: var(--parchment);
+  line-height: 2.2;
+  letter-spacing: 0.05em;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 1.5rem;
 }
 .hero .rni-heading {
+  font-size: clamp(1.3rem, 3vw, 2.2rem);
   text-align: center;
+  white-space: nowrap;
 }
+
+/* Mobile only */
+@media (max-width: 768px) {
+  .hero .cert-headline {
+    font-size: clamp(0.72rem, 3.4vw, 0.88rem);
+    letter-spacing: 0.02em;
+    line-height: 2.4;
+    white-space: nowrap;
+  }
+  .hero .rni-heading {
+    font-size: clamp(1rem, 5.5vw, 1.4rem);
+    white-space: nowrap;
+  }
 .video-section {
   width: 100%;
   max-width: 1200px;
