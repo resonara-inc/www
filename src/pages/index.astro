@@ -205,113 +205,86 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
 }
 .hero-eyebrow {
   font-family: "Cinzel", serif;
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-size: clamp(0.85rem, 2vw, 2.2rem);
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.2em;
   color: var(--parchment);
-  line-height: 1.9;
+  line-height: 1.6;
   opacity: 1;
-  text-shadow:
-    -2px -2px 6px rgba(0,0,0,0.6),
-     2px -2px 6px rgba(0,0,0,0.6),
-    -2px  2px 6px rgba(0,0,0,0.6),
-     2px  2px 6px rgba(0,0,0,0.6);
+  text-shadow: none;
 }
 .hero-eyebrow-sub {
   font-family: "Cinzel", serif;
-  font-size: clamp(0.9rem, 1.8vw, 1.35rem);
+  font-size: clamp(0.7rem, 1.4vw, 1.35rem);
   font-weight: 600;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.2em;
   color: var(--gold);
   opacity: 1;
   display: block;
-  margin-top: 0.7rem;
-  text-shadow:
-    -2px -2px 6px rgba(0,0,0,0.6),
-     2px -2px 6px rgba(0,0,0,0.6),
-    -2px  2px 6px rgba(0,0,0,0.6),
-     2px  2px 6px rgba(0,0,0,0.6);
+  margin-top: 0.5rem;
+  text-shadow: none;
 }
 .hero-title {
   font-family: "Cinzel", serif;
-  font-size: clamp(2rem, 6vw, 4.8rem);
+  font-size: clamp(1.5rem, 5vw, 4.8rem);
   font-weight: 400;
   line-height: 1.18;
   color: var(--parchment);
   letter-spacing: 0.05em;
   margin-bottom: 0.4rem;
   text-align: center;
-  text-shadow:
-    -2px -2px 8px rgba(0,0,0,0.65),
-     2px -2px 8px rgba(0,0,0,0.65),
-    -2px  2px 8px rgba(0,0,0,0.65),
-     2px  2px 8px rgba(0,0,0,0.65);
+  text-shadow: none;
+  -webkit-text-stroke: 0.3px rgba(0,0,0,0.25);
+}
+.hero-title span {
+  color: var(--gold);
 }
 .hero-subtitle {
-  font-size: clamp(1.4rem, 2.5vw, 1.65rem);
+  font-size: clamp(1rem, 2.5vw, 1.65rem);
   font-style: italic;
   font-weight: 300;
   color: var(--gold-pale);
   opacity: 0.95;
   letter-spacing: 0.05em;
   text-align: center;
-  text-shadow:
-    -2px -2px 6px rgba(0,0,0,0.6),
-     2px -2px 6px rgba(0,0,0,0.6),
-    -2px  2px 6px rgba(0,0,0,0.6),
-     2px  2px 6px rgba(0,0,0,0.6);
+  text-shadow: none;
+  -webkit-text-stroke: 0.3px rgba(0,0,0,0.2);
 }
 
-/* SPACER — large on all screens, pushes title up */
+.hero-overlay {
+  display: none;
+}
+
 .hero-bottom {
-  height: clamp(16rem, 45vh, 28rem);
-}
-
-.hero-title {
-  font-family: "Cinzel", serif;
-  font-size: clamp(2rem, 6vw, 4.8rem);
-  font-weight: 400;
-  line-height: 1.18;
-  color: var(--parchment);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.4rem;
-  text-align: center;
-  text-shadow: 0 2px 24px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.9);
-}
-.hero-title span {
-  color: var(--gold);
-}
-.hero-subtitle {
-  font-size: clamp(1.4rem, 2.5vw, 1.65rem);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--gold-pale);
-  opacity: 0.88;
-  letter-spacing: 0.05em;
-  text-align: center;
-  text-shadow: 0 1px 12px rgba(0,0,0,0.7);
+  height: clamp(22rem, 56vh, 38rem);
 }
 
 @media (max-width: 768px) {
-  .hero-content {
-    padding: 1rem 2rem 0;
+  .hero-top {
+    padding-top: clamp(4.5rem, 9vh, 6rem);
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
-  .hero-bottom {
-  height: clamp(20rem, 52vh, 34rem);
-}
-
-@media (max-width: 768px) {
-  .hero-content {
-    padding: 1rem 2rem 0;
+  .hero-eyebrow {
+    font-size: clamp(0.75rem, 3.8vw, 1rem);
+    letter-spacing: 0.15em;
+    line-height: 1.5;
   }
-  .hero-bottom {
-    height: clamp(18rem, 50vh, 26rem);
+  .hero-eyebrow-sub {
+    font-size: clamp(0.65rem, 3.2vw, 0.85rem);
+    letter-spacing: 0.12em;
+  }
+  .hero-content {
+    padding: 0.5rem 1.5rem 0;
   }
   .hero-title {
-    font-size: clamp(1.6rem, 8vw, 2.4rem);
+    font-size: clamp(1.4rem, 7.5vw, 2.2rem);
   }
   .hero-subtitle {
-    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+    font-size: clamp(0.95rem, 4vw, 1.2rem);
+  }
+  .hero-bottom {
+    height: clamp(20rem, 54vh, 28rem);
   }
 }
 /* SCROLL CUE */
