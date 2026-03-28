@@ -24,8 +24,12 @@ import ResonaraBoxFinal from "../assets/ResonaraBoxFinal.png";
   <div class="hero-inner">
 
     <div class="hero-top">
-      <h2 class="hero-eyebrow">Stillness of Mind<br />In a Restless World</h2>
-    </div>
+  <h2 class="hero-eyebrow">
+    Stillness of Mind<br />
+    In a Restless World<br />
+    <span class="hero-eyebrow-sub">Through Automated Himalayan Sound Therapy</span>
+  </h2>
+</div>
 
     <div class="hero-content">
       <h1 class="hero-title">Ten minutes of <span>Resonara</span></h1>
@@ -192,7 +196,15 @@ import ResonaraBoxFinal from "../assets/ResonaraBoxFinal.png";
   line-height: 1.8;
   opacity: 0.95;
 }
-
+.hero-eyebrow-sub {
+  font-family: "Cinzel", serif;
+  font-size: clamp(0.65rem, 1.3vw, 1rem);
+  letter-spacing: 0.38em;
+  color: var(--gold);
+  opacity: 0.78;
+  display: block;
+  margin-top: 0.6rem;
+}
 /* TITLE + SUBTITLE — fills the middle, centres itself */
 .hero-content {
   flex: 1;
