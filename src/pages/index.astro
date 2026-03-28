@@ -189,7 +189,7 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: flex-start; 
   padding-bottom: 12vh;
 }
 
@@ -198,7 +198,7 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
   min-width: min(340px, 72vw);
   max-width: 72vw;
   text-align: center;
-  padding: clamp(3rem, 5vh, 4rem) 1.6rem 1rem;
+  padding: clamp(4.5rem, 7vh, 5.5rem) 1.6rem 0.7rem;
   background: rgba(10, 8, 5, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -295,7 +295,8 @@ import HeroMobile  from "../assets/ResonaraLondonPortrait.png";
     min-width: unset;
     max-width: 85vw;
     padding: 0.5rem 1.2rem 0.65rem;
-    margin-top: 0.25rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0; 
   }
   .hero-title {
     font-size: clamp(1.1rem, 5.5vw, 1.5rem);
