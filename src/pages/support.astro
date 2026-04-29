@@ -1,0 +1,243 @@
+---
+import DarkLayout from "../layouts/DarkLayout.astro";
+---
+
+<DarkLayout title="Support — Resonara" description="Get help with your Resonara app">
+  <div class="support-page">
+    <div class="support-inner">
+      <p class="support-label">Help Centre</p>
+      <h1 class="support-title">Support</h1>
+      <p class="support-sub">We're here to help. Reach out and we'll respond within one business day.</p>
+
+      <div class="support-grid">
+        <div class="support-card">
+          <p class="card-icon">✦</p>
+          <h2>General Enquiries</h2>
+          <p>Questions about the Resonara app, your account, or our sound therapy protocol.</p>
+          <a href="mailto:support@resonara.com" class="card-link">support@resonara.com</a>
+        </div>
+
+        <div class="support-card">
+          <p class="card-icon">✦</p>
+          <h2>Billing & Subscriptions</h2>
+          <p>Help with charges, refund requests, or managing your subscription.</p>
+          <a href="mailto:billing@resonara.com" class="card-link">billing@resonara.com</a>
+          <p class="card-note">
+            For app store purchases, refunds are handled directly by <a href="https://support.apple.com/en-gb/118223" target="_blank" rel="noopener noreferrer">Apple</a> or <a
+              href="https://support.google.com/googleplay/answer/2479637"
+              target="_blank"
+              rel="noopener noreferrer">Google Play</a
+            >.
+          </p>
+        </div>
+
+        <div class="support-card">
+          <p class="card-icon">✦</p>
+          <h2>Privacy & Data</h2>
+          <p>Account deletion requests, data access, or questions about our Privacy Policy.</p>
+          <a href="mailto:privacy@resonara.com" class="card-link">privacy@resonara.com</a>
+        </div>
+
+        <div class="support-card">
+          <p class="card-icon">✦</p>
+          <h2>Business & Partnerships</h2>
+          <p>Corporate wellness programmes, spa integrations, and enterprise enquiries.</p>
+          <a href="/partners" class="card-link">View Partnerships →</a>
+        </div>
+      </div>
+
+      <div class="faq">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <details class="faq-item">
+          <summary>How do I cancel my subscription?</summary>
+          <p>
+            Subscriptions are managed through the app store you used to purchase. On iPhone, go to Settings → Apple ID → Subscriptions. On Android, open the Google Play Store → Profile → Payments &
+            subscriptions → Subscriptions. Select Resonara and tap Cancel.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I delete my account and data?</summary>
+          <p>
+            Email <a href="mailto:privacy@resonara.com">privacy@resonara.com</a> with the subject line "Delete my account" from the email address associated with your account. We will process your request
+            within 30 days.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>The app isn't working correctly — what should I do?</summary>
+          <p>
+            Try closing and reopening the app, then ensure you have the latest version installed. If the issue persists, email <a href="mailto:support@resonara.com">support@resonara.com</a> with your device
+            model, operating system version, and a description of the problem.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are my health and wellness sessions stored on your servers?</summary>
+          <p>Session data is stored locally on your device by default. We do not collect or transmit audio or biometric data. Please see our <a href="/privacy">Privacy Policy</a> for full details.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is Resonara suitable for people with medical conditions?</summary>
+          <p>
+            Resonara is a general wellness product and is not a medical device. Please consult your healthcare provider before use if you have a medical condition, particularly epilepsy or other
+            sound-sensitivity disorders.
+          </p>
+        </details>
+      </div>
+    </div>
+  </div>
+</DarkLayout>
+
+<style>
+  .support-page {
+    min-height: 100vh;
+    padding: 7rem 1.5rem 5rem;
+    background: var(--dark-base, #0e0c09);
+  }
+  .support-inner {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .support-label {
+    font-family: "Cinzel", serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    color: var(--gold, #c9a84c);
+    opacity: 0.75;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .support-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    color: var(--parchment, #f5f0eb);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .support-sub {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    color: rgba(245, 240, 235, 0.65);
+    margin-bottom: 3.5rem;
+    font-style: italic;
+  }
+
+  /* Cards */
+  .support-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .support-card {
+    border: 1px solid rgba(201, 168, 76, 0.18);
+    padding: 2rem;
+    background: rgba(201, 168, 76, 0.03);
+    transition: border-color 0.2s;
+  }
+  .support-card:hover {
+    border-color: rgba(201, 168, 76, 0.35);
+  }
+  .card-icon {
+    color: var(--gold, #c9a84c);
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+  }
+  .support-card h2 {
+    font-family: "Cinzel", serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--parchment, #f5f0eb);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+  }
+  .support-card p {
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+    color: rgba(245, 240, 235, 0.65);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  .card-link {
+    font-family: "Cinzel", serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    color: var(--gold, #c9a84c);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  .card-link:hover {
+    opacity: 0.75;
+  }
+  .card-note {
+    font-size: 0.82rem !important;
+    opacity: 0.8;
+  }
+  .card-note a {
+    color: var(--gold, #c9a84c);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* FAQ */
+  .faq-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    color: var(--gold, #c9a84c);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+  .faq-item {
+    border-top: 1px solid rgba(201, 168, 76, 0.12);
+    padding: 1.2rem 0;
+  }
+  .faq-item:last-child {
+    border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  }
+  .faq-item summary {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(0.9rem, 1.4vw, 1rem);
+    font-weight: 500;
+    color: rgba(245, 240, 235, 0.88);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 1.5rem;
+    user-select: none;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    color: var(--gold, #c9a84c);
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: transform 0.2s;
+  }
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+  .faq-item p {
+    font-family: "Inter", sans-serif;
+    font-size: 0.92rem;
+    color: rgba(245, 240, 235, 0.65);
+    line-height: 1.75;
+    margin-top: 0.9rem;
+  }
+  .faq-item a {
+    color: var(--gold, #c9a84c);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
