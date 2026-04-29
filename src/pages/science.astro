@@ -4,7 +4,9 @@ import { Image } from "astro:assets";
 import BowlCertificateFinal from "../assets/BowlCertificateFinal.png";
 import ResonaraBowlCraft from "../assets/ResonaraBowlCraft.png";
 import ResonaraBowlMallet from "../assets/ResonaraBowlMallet.png";
-import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
+// import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
+import videoMp4 from "../assets/ResonaraBowlMalletstrikes.opt.mp4";
+import videoWebm from "../assets/ResonaraBowlMalletstrikes.opt.webm";
 ---
 
 <DarkLayout title="Resonara — The Science" description="Frequency is not mysticism. It is mathematics. The acoustic science behind Resonara.">
@@ -25,7 +27,10 @@ import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
 
   <!-- ═══════════ STRIKE VIDEO ═══════════ -->
   <section class="video-section">
-    <video src="/ResonaraBowlMalletstrikes.mp4" controls loop playsinline class="strike-video"></video>
+    <video controls loop playsinline class="strike-video">
+      <source src={videoWebm} type="video/webm" />
+      <source src={videoMp4} type="video/mp4" />
+    </video>
     <p class="hero-sub reveal d2">Every bowl is engineered to a precise acoustic specification. Every strike is calibrated to produce a measurable neurological response.</p>
   </section>
 
