@@ -8,10 +8,10 @@ const { title, description = "Ancient Frequency. Modern Proof." } = Astro.props;
 const path = Astro.url.pathname;
 
 const navLinks = [
-  { href: "/science", label: "The Science" },
-  { href: "/who-its-for", label: "Who It's For" },
-  { href: "/partners", label: "Partners" },
-  { href: "/story", label: "Our Story" },
+  { href: "/who-its-for",    label: "Who It's For" },
+  { href: "/science",        label: "The Science" },
+  { href: "/story",          label: "Our Story" },
+  { href: "/partners",       label: "Partners" },
   { href: "/roi-calculator", label: "ROI Calculator" },
 ];
 ---
@@ -142,6 +142,11 @@ const navLinks = [
     font-family: "Cormorant Garamond", Georgia, serif;
     overflow-x: hidden;
   }
+/* Clears fixed nav on all pages */
+body > section:first-of-type:not(.hero),
+main > section:first-of-type:not(.hero) {
+  padding-top: clamp(5rem, 9vh, 7rem);
+}
 
   /* ── NAV ── */
   nav {
@@ -181,6 +186,16 @@ const navLinks = [
   .nav-links a.active {
     color: var(--gold);
   }
+.nav-links a[href="/roi-calculator"] {
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  padding: 0.3rem 0.9rem;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-links a[href="/roi-calculator"]:hover {
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--gold-light);
+}
   /* ── HAMBURGER BUTTON ── */
   .nav-toggle {
     display: none;
