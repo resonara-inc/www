@@ -7,6 +7,7 @@ import ResonaraLondon from "../assets/ResonaraLondon.png";
 import ResonaraBoxFinal from "../assets/ResonaraBoxFinal.png";
 import HeroDesktop from "../assets/ResonaraLondonF.png";
 import HeroMobile from "../assets/ResonaraLondonPortrait.png";
+import LoungeFloor3 from "../assets/LoungeFloor3.png";
 ---
 
 <DarkLayout title="Resonara — Stillness of Mind<br /> In a Restless World" description="Ten minutes of Resonara. Eight hours of everything else.">
@@ -14,9 +15,9 @@ import HeroMobile from "../assets/ResonaraLondonPortrait.png";
   <section class="hero" style="padding-top: 0 !important;">
     <picture class="hero-picture">
       <!-- Portrait — phones only (max 768px) -->
-      <source srcset={HeroMobile.src} media="(max-width: 768px)" />
+      <source srcset={LoungeFloor3.src} media="(max-width: 768px)" />
       <!-- Landscape — everything else -->
-      <img src={HeroDesktop.src} alt="Stillness of mind in a restless world — Resonara" class="hero-img" loading="eager" fetchpriority="high" />
+      <img src={LoungeFloor3.src} alt="Stillness of mind in a restless world — Resonara" class="hero-img" loading="eager" fetchpriority="high" />
     </picture>
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
