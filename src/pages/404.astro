@@ -1,0 +1,169 @@
+---
+import DarkLayout from "../layouts/DarkLayout.astro";
+---
+
+<DarkLayout title="Resonara — Page Not Found" description="This frequency doesn't resonate. The page you were looking for could not be found.">
+  <section class="nf">
+    <div class="bowl-pulse" aria-hidden="true">
+      <div class="bp-ring"></div>
+      <div class="bp-ring"></div>
+      <div class="bp-ring"></div>
+      <div class="bp-ring"></div>
+    </div>
+
+    <div class="nf-inner fade-up">
+      <div class="nf-eyebrow">Error 404</div>
+      <div class="nf-code">404</div>
+      <h1 class="nf-title">This page has fallen <span>silent</span></h1>
+      <p class="nf-sub">Looks like you've followed a broken link, or entered a URL that doesn't exist on this site. The frequency you were seeking isn't here — but the practice always begins again.</p>
+      <div class="nf-actions">
+        <a href="/" class="cta-btn"><span>Return Home</span></a>
+        <a href="/symbol" class="cta-btn outline"><span>The Symbol &nbsp;→</span></a>
+      </div>
+    </div>
+  </section>
+</DarkLayout>
+
+<style>
+  .nf {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: clamp(5rem, 12vw, 9rem) clamp(1.5rem, 5vw, 2rem) clamp(4rem, 8vw, 6rem);
+    background: linear-gradient(to bottom, var(--dark) 0%, var(--dark-mid) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .nf::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center 42%, rgba(201, 168, 76, 0.08) 0%, transparent 68%);
+  }
+
+  /* sound-wave rings */
+  .bowl-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    height: 560px;
+    pointer-events: none;
+  }
+  .bp-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 76, 0.12);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: bpPulse 5s ease-in-out infinite;
+  }
+  .bp-ring:nth-child(1) {
+    width: 170px;
+    height: 170px;
+    animation-delay: 0s;
+  }
+  .bp-ring:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    animation-delay: 0.8s;
+  }
+  .bp-ring:nth-child(3) {
+    width: 430px;
+    height: 430px;
+    animation-delay: 1.6s;
+  }
+  .bp-ring:nth-child(4) {
+    width: 560px;
+    height: 560px;
+    animation-delay: 2.4s;
+  }
+  @keyframes bpPulse {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 0.18;
+      transform: translate(-50%, -50%) scale(1.04);
+    }
+  }
+
+  .nf-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+  }
+  .nf-eyebrow {
+    font-family: "Cinzel", serif;
+    font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+    letter-spacing: 0.45em;
+    color: var(--gold);
+    opacity: 0.85;
+    margin-bottom: 1.4rem;
+  }
+  .nf-code {
+    font-family: "Cinzel", serif;
+    font-size: clamp(4.5rem, 16vw, 9rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    text-shadow: 0 0 60px rgba(201, 168, 76, 0.25);
+  }
+  .nf-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(1.5rem, 4.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--parchment);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.4rem;
+  }
+  .nf-title span {
+    color: var(--gold);
+    font-style: italic;
+    font-family: "Cormorant Garamond", Georgia, serif;
+  }
+  .nf-sub {
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-style: italic;
+    color: rgba(250, 245, 233, 0.62);
+    line-height: 1.85;
+    max-width: 580px;
+    margin: 0 auto 2.6rem;
+  }
+  .nf-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── FADE-UP ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.75s ease,
+      transform 0.75s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // 404 is rendered statically; reveal immediately on load.
+  requestAnimationFrame(() => {
+    document.querySelectorAll(".fade-up").forEach((el) => el.classList.add("visible"));
+  });
+</script>
