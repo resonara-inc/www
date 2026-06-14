@@ -9,6 +9,7 @@ import HeroDesktop from "../assets/ResonaraLondonF.png";
 import HeroMobile from "../assets/ResonaraLondonPortrait.png";
 import LoungeFloor3 from "../assets/LoungeFloor3.png";
 import RGM from "../assets/RGM.png";
+import RFM from "../assets/RFM.png";
 import LoungeFloorMobile from "../assets/lounge-floor-mobile.png";
 ---
 
@@ -17,7 +18,7 @@ import LoungeFloorMobile from "../assets/lounge-floor-mobile.png";
   <section class="hero" style="padding-top: 0 !important;">
     <picture class="hero-picture">
       <!-- Portrait — phones only (max 768px) -->
-      <source srcset={LoungeFloorMobile.src} media="(max-width: 768px)" />
+      <source srcset={RFM.src} media="(max-width: 768px)" />
       <!-- Landscape — everything else -->
       <img src={RGM.src} alt="Stillness of mind in a restless world — Resonara" class="hero-img" loading="eager" fetchpriority="high" />
     </picture>
