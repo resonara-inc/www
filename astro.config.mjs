@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   output: "static",
@@ -7,9 +7,7 @@ export default defineConfig({
     // Sharp is the default — converts to WebP, resizes, compresses at build time
     quality: 75,
   },
-  integrations: [
-    tailwind({
-      applyBaseStyles: false
-    })
-  ]
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

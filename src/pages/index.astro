@@ -1,26 +1,42 @@
 ---
 import DarkLayout from "../layouts/DarkLayout.astro";
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import WoodcutterF from "../assets/WoodcutterF.png";
 import WoodcutterOnly from "../assets/WoodcutterOnly.png";
-import ResonaraLondon from "../assets/ResonaraLondon.png";
 import ResonaraBoxFinal from "../assets/ResonaraBoxFinal.png";
-import HeroDesktop from "../assets/ResonaraLondonF.png";
-import HeroMobile from "../assets/ResonaraLondonPortrait.png";
-import LoungeFloor3 from "../assets/LoungeFloor3.png";
 import RGM from "../assets/RGM.png";
 import RFM from "../assets/RFM.png";
-import LoungeFloorMobile from "../assets/lounge-floor-mobile.png";
+
+const heroDesktopWidths = [768, 1280, 1920, 2560];
+const heroMobileWidths = [480, 768, 1024, 1536];
+const [heroDesktopAvif, heroDesktopWebp, heroMobileAvif, heroMobileWebp] = await Promise.all([
+  getImage({ src: RGM, widths: heroDesktopWidths, format: "avif", quality: 70 }),
+  getImage({ src: RGM, widths: heroDesktopWidths, format: "webp", quality: 72 }),
+  getImage({ src: RFM, widths: heroMobileWidths, format: "avif", quality: 70 }),
+  getImage({ src: RFM, widths: heroMobileWidths, format: "webp", quality: 72 }),
+]);
 ---
 
-<DarkLayout title="Resonara — Stillness of Mind<br /> In a Restless World" description="Ten minutes of Resonara. Eight hours of everything else.">
+<DarkLayout title="Resonara — Stillness of Mind in a Restless World" description="Ten minutes of Resonara. Eight hours of everything else.">
   <!-- ═══════════ HERO ═══════════ -->
   <section class="hero" style="padding-top: 0 !important;">
     <picture class="hero-picture">
-      <!-- Portrait — phones only (max 768px) -->
-      <source srcset={RFM.src} media="(max-width: 768px)" />
-      <!-- Landscape — everything else -->
-      <img src={RGM.src} alt="Stillness of mind in a restless world — Resonara" class="hero-img" loading="eager" fetchpriority="high" />
+      <source media="(max-width: 768px)" type="image/avif" srcset={heroMobileAvif.srcSet.attribute} sizes="100vw" />
+      <source media="(max-width: 768px)" type="image/webp" srcset={heroMobileWebp.srcSet.attribute} sizes="100vw" />
+      <source type="image/avif" srcset={heroDesktopAvif.srcSet.attribute} sizes="100vw" />
+      <source type="image/webp" srcset={heroDesktopWebp.srcSet.attribute} sizes="100vw" />
+      <img
+        src={heroDesktopWebp.src}
+        srcset={heroDesktopWebp.srcSet.attribute}
+        sizes="100vw"
+        width="2730"
+        height="1536"
+        alt="Stillness of mind in a restless world — Resonara"
+        class="hero-img"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
     </picture>
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
@@ -52,7 +68,7 @@ import LoungeFloorMobile from "../assets/lounge-floor-mobile.png";
   <section class="split-section">
     <div class="split-wrap">
       <div class="img-panel img-panel--woodcutter has-img reveal-left">
-        <Image src={WoodcutterOnly} alt="Resonara singing bowl — ancient frequency, precision engineered" class="panel-img" width={900} quality={75} />
+        <Image src={WoodcutterOnly} alt="Resonara singing bowl — ancient frequency, precision engineered" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} />
         <div class="img-overlay img-overlay--right"></div>
       </div>
       <div class="text-panel text-panel--right">
@@ -103,7 +119,7 @@ import LoungeFloorMobile from "../assets/lounge-floor-mobile.png";
         </div>
       </div>
       <div class="img-panel img-panel--meditator has-img reveal-right">
-        <Image src={WoodcutterF} alt="Elite athlete — Resonara sharpens focus before the match" class="panel-img" width={900} quality={75} loading="lazy" />
+        <Image src={WoodcutterF} alt="Elite athlete — Resonara sharpens focus before the match" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} loading="lazy" />
         <div class="img-overlay img-overlay--left"></div>
       </div>
     </div>
@@ -117,7 +133,7 @@ import LoungeFloorMobile from "../assets/lounge-floor-mobile.png";
   </div>
 
   <div style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%);">
-    <Image src={ResonaraBoxFinal} alt="ResonaraBoxFinal" width={1600} quality={80} loading="lazy" style="width: 100%; display: block;" />
+    <Image src={ResonaraBoxFinal} alt="Resonara treatment system with singing bowl, mallet, and presentation case" width={1600} widths={[640, 960, 1280, 1600]} sizes="100vw" quality={80} loading="lazy" style="width: 100%; display: block;" />
   </div>
 
   <!-- ═══════════ PROOF BAND ═══════════ -->

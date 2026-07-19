@@ -1,12 +1,14 @@
 ---
 import DarkLayout from "../layouts/DarkLayout.astro";
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import BowlCertificateFinal from "../assets/BowlCertificateFinal.png";
 import ResonaraBowlCraft from "../assets/ResonaraBowlCraft.png";
 import ResonaraBowlMallet from "../assets/ResonaraBowlMallet.png";
-// import ResonaraBowlMalletStrikes from "../assets/ResonaraBowlMalletstrikes.mp4";
 import videoMp4 from "../assets/ResonaraBowlMalletstrikes.opt.mp4";
 import videoWebm from "../assets/ResonaraBowlMalletstrikes.opt.webm";
+import videoPoster from "../assets/ResonaraBowlMalletstrikes-poster.jpg";
+
+const optimizedVideoPoster = await getImage({ src: videoPoster, width: 1280, format: "webp", quality: 72 });
 ---
 
 <DarkLayout title="Resonara — The Science" description="Frequency is not mysticism. It is mathematics. The acoustic science behind Resonara.">
@@ -27,7 +29,7 @@ import videoWebm from "../assets/ResonaraBowlMalletstrikes.opt.webm";
 
   <!-- ═══════════ STRIKE VIDEO ═══════════ -->
   <section class="video-section">
-    <video controls loop playsinline class="strike-video">
+    <video controls loop playsinline preload="none" poster={optimizedVideoPoster.src} class="strike-video" aria-label="Resonara singing bowl being struck with its calibrated mallet">
       <source src={videoWebm} type="video/webm" />
       <source src={videoMp4} type="video/mp4" />
     </video>
@@ -39,7 +41,7 @@ import videoWebm from "../assets/ResonaraBowlMalletstrikes.opt.webm";
   <!-- ═══════════ SECTION 01 — CRAFTSMANSHIP ═══════════ -->
   <section class="science-section">
     <div class="img-side img-side--craft has-img reveal-left">
-      <Image src={ResonaraBowlCraft} alt="Resonara bowl — artisan-forged, 7-metal alloy, acoustically certified" class="panel-img" width={900} quality={75} />
+      <Image src={ResonaraBowlCraft} alt="Resonara bowl — artisan-forged, 7-metal alloy, acoustically certified" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} />
       <div class="img-overlay overlay-right"></div>
     </div>
     <div class="text-side gold-tint">
@@ -103,7 +105,7 @@ import videoWebm from "../assets/ResonaraBowlMalletstrikes.opt.webm";
       </div>
     </div>
     <div class="img-side img-side--mallet has-img reveal-right">
-      <Image src={ResonaraBowlMallet} alt="Resonara bowl and calibrated mallet — precision instrument" class="panel-img" width={900} quality={75} loading="lazy" />
+      <Image src={ResonaraBowlMallet} alt="Resonara bowl and calibrated mallet — precision instrument" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} loading="lazy" />
       <div class="img-overlay overlay-left"></div>
     </div>
   </section>
@@ -149,7 +151,7 @@ import videoWebm from "../assets/ResonaraBowlMalletstrikes.opt.webm";
   <!-- ═══════════ SECTION 03 — THE TRADITION ═══════════ -->
   <section class="science-section">
     <div class="img-side img-side--tradition has-img reveal-left">
-      <Image src={BowlCertificateFinal} alt="Resonara — where ancient tradition meets modern science" class="panel-img" width={900} quality={75} loading="lazy" />
+      <Image src={BowlCertificateFinal} alt="Resonara — where ancient tradition meets modern science" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} loading="lazy" />
       <div class="img-overlay overlay-right"></div>
     </div>
     <div class="text-side gold-tint">

@@ -1,12 +1,9 @@
 ---
 import DarkLayout from "../layouts/DarkLayout.astro";
 import { Image } from "astro:assets";
-import CorporateNY2 from "../assets/CorporateNY2.png";
 import ResonaraDubai2 from "../assets/ResonaraDubai2.png";
 import ResonaraFootball1 from "../assets/ResonaraFootball1.png";
-import SFOStartup1 from "../assets/SFOStartup1.png";
 import ResonaraCricket1 from "../assets/ResonaraCricket1.png";
-import ResonaraLondon from "../assets/ResonaraLondon.png";
 import Resonaracorporate6 from "../assets/Resonaracorporate6.png";
 import CorporateGirl88 from "../assets/CorporateGirl88.png";
 import LCR from "../assets/LCR.png";
@@ -24,9 +21,9 @@ import LCR from "../assets/LCR.png";
       <p class="hero-sub reveal d3">
         The founder. The executive. The performer. The elite athlete. They live at different edges — but they share one problem. The swing never stops. The sharpening never starts.
       </p>
-      <nav class="persona-nav reveal d4">
+      <nav class="persona-nav reveal d4" aria-label="Page sections">
         <a href="#optimiser">The Optimiser</a>
-        <a href="#executive">The Executive</a>
+        <a href="#businessman">The Businessman</a>
         <a href="#performer">The Performer</a>
         <a href="#founder">The Founder</a>
         <a href="#athlete">The Athlete</a>
@@ -52,7 +49,7 @@ import LCR from "../assets/LCR.png";
       </div>
     </div>
     <div class="persona-img persona-img--founder has-img reveal-right">
-      <Image src={Resonaracorporate6} alt="San Francisco — Resonara for the Founder" class="panel-img" width={900} quality={75} loading="lazy" />
+      <Image src={Resonaracorporate6} alt="San Francisco — Resonara for the Founder" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} loading="lazy" />
       <div class="persona-img-overlay persona-img-overlay--left"></div>
     </div>
   </section>
@@ -62,7 +59,7 @@ import LCR from "../assets/LCR.png";
   <!-- ═══════════ 2. THE OPTIMISER ═══════════ -->
   <section class="persona-card left" id="optimiser">
     <div class="persona-img persona-img--optimiser has-img reveal-left">
-      <Image src={CorporateGirl88} alt="New York — Resonara for the Optimiser" class="panel-img" width={900} quality={75} loading="lazy" />
+      <Image src={CorporateGirl88} alt="New York — Resonara for the Optimiser" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} loading="lazy" />
       <div class="persona-img-overlay"></div>
     </div>
     <div class="persona-text">
@@ -100,7 +97,7 @@ import LCR from "../assets/LCR.png";
       </div>
     </div>
     <div class="persona-img persona-img--leader has-img reveal-right">
-      <Image src={LCR} alt="London — Resonara for the Leader" class="panel-img" width={900} quality={75} loading="lazy" />
+      <Image src={LCR} alt="London — Resonara for the Leader" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} loading="lazy" />
       <div class="persona-img-overlay persona-img-overlay--left"></div>
     </div>
   </section>
@@ -110,7 +107,7 @@ import LCR from "../assets/LCR.png";
   <!-- ═══════════ 4. THE PERFORMER ═══════════ -->
   <section class="persona-card left" id="performer">
     <div class="persona-img persona-img--performer has-img reveal-left">
-      <Image src={ResonaraFootball1} alt="Professional football — Resonara for the Performer" class="panel-img" width={900} quality={75} loading="lazy" />
+      <Image src={ResonaraFootball1} alt="Professional football — Resonara for the Performer" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} loading="lazy" />
       <div class="persona-img-overlay"></div>
     </div>
     <div class="persona-text">
@@ -122,73 +119,73 @@ import LCR from "../assets/LCR.png";
       </p>
       <div class="persona-quote reveal d4">
         <p>Before the performance, there is the preparation. <br /><span> Ten minutes. Then perform.</span></p>
-        <div class="persona-stats reveal d4">
-          <div class="stat-pill"><span class="stat-val">EEG</span><span class="stat-label">Biometric</span></div>
-          <div class="stat-pill"><span class="stat-val">HRV</span><span class="stat-label">Validated</span></div>
-          <div class="stat-pill"><span class="stat-val">Pre-Game</span><span class="stat-label">Protocol</span></div>
-        </div>
+      </div>
+      <div class="persona-stats reveal d4">
+        <div class="stat-pill"><span class="stat-val">EEG</span><span class="stat-label">Biometric</span></div>
+        <div class="stat-pill"><span class="stat-val">HRV</span><span class="stat-label">Validated</span></div>
+        <div class="stat-pill"><span class="stat-val">Pre-Game</span><span class="stat-label">Protocol</span></div>
       </div>
     </div>
+  </section>
 
-    <div class="connector"></div>
+  <div class="connector"></div>
 
-    <!-- ═══════════ 5. THE BUSINESSMAN ═══════════ -->
-    <section class="persona-card right" id="businessman">
-      <div class="persona-text">
-        <p class="persona-tag reveal d1">The Businessman</p>
-        <h2 class="persona-headline reveal d2">Your decisions are worth millions.<br /><span>Your clarity is worth more.</span></h2>
-        <p class="persona-body reveal d3">
-          You see clearly when others cannot. But decision fatigue is not a motivational problem — it is a neurological one. A nervous system running on cortisol and unprocessed stress produces
-          different quality decisions than one that has been reset. Resonara is ten minutes of calibrated frequency. The boardroom gets the best version of you.
-        </p>
-        <div class="persona-quote reveal d4"><p>Not relaxation. Recalibration. There is a difference — and your P&L knows it.</p></div>
-        <div class="persona-stats reveal d4">
-          <div class="stat-pill"><span class="stat-val">10 min</span><span class="stat-label">Protocol</span></div>
-          <div class="stat-pill"><span class="stat-val">Daily</span><span class="stat-label">Reset</span></div>
-          <div class="stat-pill"><span class="stat-val">EEG</span><span class="stat-label">Proven</span></div>
-        </div>
+  <!-- ═══════════ 5. THE BUSINESSMAN ═══════════ -->
+  <section class="persona-card right" id="businessman">
+    <div class="persona-text">
+      <p class="persona-tag reveal d1">The Businessman</p>
+      <h2 class="persona-headline reveal d2">Your decisions are worth millions.<br /><span>Your clarity is worth more.</span></h2>
+      <p class="persona-body reveal d3">
+        You see clearly when others cannot. But decision fatigue is not a motivational problem — it is a neurological one. A nervous system running on cortisol and unprocessed stress produces
+        different quality decisions than one that has been reset. Resonara is ten minutes of calibrated frequency. The boardroom gets the best version of you.
+      </p>
+      <div class="persona-quote reveal d4"><p>Not relaxation. Recalibration. There is a difference — and your P&L knows it.</p></div>
+      <div class="persona-stats reveal d4">
+        <div class="stat-pill"><span class="stat-val">10 min</span><span class="stat-label">Protocol</span></div>
+        <div class="stat-pill"><span class="stat-val">Daily</span><span class="stat-label">Reset</span></div>
+        <div class="stat-pill"><span class="stat-val">EEG</span><span class="stat-label">Proven</span></div>
       </div>
-      <div class="persona-img persona-img--executive has-img reveal-right">
-        <Image src={ResonaraDubai2} alt="Dubai — Resonara for the Businessman" class="panel-img" width={900} quality={75} loading="lazy" />
-        <div class="persona-img-overlay persona-img-overlay--left"></div>
-      </div>
-    </section>
+    </div>
+    <div class="persona-img persona-img--businessman has-img reveal-right">
+      <Image src={ResonaraDubai2} alt="Dubai — Resonara for the Businessman" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} loading="lazy" />
+      <div class="persona-img-overlay persona-img-overlay--left"></div>
+    </div>
+  </section>
 
-    <div class="connector"></div>
+  <div class="connector"></div>
 
-    <!-- ═══════════ 6. THE ATHLETE ═══════════ -->
-    <section class="persona-card left" id="athlete">
-      <div class="persona-img persona-img--athlete has-img reveal-left">
-        <Image src={ResonaraCricket1} alt="Professional cricket — Resonara for the Athlete" class="panel-img" width={900} quality={75} loading="lazy" />
-        <div class="persona-img-overlay"></div>
+  <!-- ═══════════ 6. THE ATHLETE ═══════════ -->
+  <section class="persona-card left" id="athlete">
+    <div class="persona-img persona-img--athlete has-img reveal-left">
+      <Image src={ResonaraCricket1} alt="Professional cricket — Resonara for the Athlete" class="panel-img" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 100vw, 50vw" quality={75} loading="lazy" />
+      <div class="persona-img-overlay"></div>
+    </div>
+    <div class="persona-text">
+      <p class="persona-tag reveal d1">The Athlete</p>
+      <h2 class="persona-headline reveal d2">100,000 people. One game.<br /><span>Everything on the line.</span></h2>
+      <p class="persona-body reveal d3">
+        For the performer who lives at the edge — the body keeps the score. Every game, every press, every camera, every moment where everything depends on you. Resonara is the reset button science
+        built and ancient wisdom perfected.
+      </p>
+      <div class="persona-quote reveal d4">
+        <p>From international cricket circuits to Premier League training rooms — elite sport has always had a recovery edge. The reset button science built and ancient wisdom perfected.</p>
       </div>
-      <div class="persona-text">
-        <p class="persona-tag reveal d1">The Athlete</p>
-        <h2 class="persona-headline reveal d2">100,000 people. One game.<br /><span>Everything on the line.</span></h2>
-        <p class="persona-body reveal d3">
-          For the performer who lives at the edge — the body keeps the score. Every game, every press, every camera, every moment where everything depends on you. Resonara is the reset button science
-          built and ancient wisdom perfected.
-        </p>
-        <div class="persona-quote reveal d4">
-          <p>From international cricket circuits to Premier League training rooms — elite sport has always had a recovery edge. The reset button science built and ancient wisdom perfected.</p>
-        </div>
-        <div class="persona-stats reveal d4">
-          <div class="stat-pill"><span class="stat-val">HRV</span><span class="stat-label">Recovery</span></div>
-          <div class="stat-pill"><span class="stat-val">Delta</span><span class="stat-label">Sleep Protocol</span></div>
-          <div class="stat-pill"><span class="stat-val">EEG</span><span class="stat-label">Validated</span></div>
-        </div>
+      <div class="persona-stats reveal d4">
+        <div class="stat-pill"><span class="stat-val">HRV</span><span class="stat-label">Recovery</span></div>
+        <div class="stat-pill"><span class="stat-val">Delta</span><span class="stat-label">Sleep Protocol</span></div>
+        <div class="stat-pill"><span class="stat-val">EEG</span><span class="stat-label">Validated</span></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ═══════════ CLOSING ═══════════ -->
-    <section class="closing">
-      <div class="closing-inner">
-        <div class="section-label reveal">For Every Edge</div>
-        <p class="closing-main reveal d1">The swing never stops.<br /><span>At least sharpen first.</span></p>
-        <p class="closing-sub reveal d2">Ten minutes of Resonara. Every morning. Before the world asks for everything you have — make sure you have it to give.</p>
-        <a href="/science" class="cta-btn reveal d3"><span>Read the Science &nbsp;→</span></a>
-      </div>
-    </section>
+  <!-- ═══════════ CLOSING ═══════════ -->
+  <section class="closing">
+    <div class="closing-inner">
+      <div class="section-label reveal">For Every Edge</div>
+      <p class="closing-main reveal d1">The swing never stops.<br /><span>At least sharpen first.</span></p>
+      <p class="closing-sub reveal d2">Ten minutes of Resonara. Every morning. Before the world asks for everything you have — make sure you have it to give.</p>
+      <a href="/science" class="cta-btn reveal d3"><span>Read the Science &nbsp;→</span></a>
+    </div>
   </section>
 
   <style>

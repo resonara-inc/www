@@ -183,18 +183,17 @@ import DarkLayout from "../layouts/DarkLayout.astro";
         <div class="team-quote">"She didn't just want to help. She understood, in two languages, exactly why it mattered."</div>
       </div>
 
-    <div class="team-card fade-up">
-      <div class="team-role">The Current</div>
-      <div class="team-name">Abhinav Kushwaha</div>
-      <div class="team-desc">
-        Electronics engineer and the intelligence behind Resonara's automation. Abhinav translates intention into circuit — the exact amplitude modulation, the calibrated strike-force control, the seamless repeatability that allows a thousand users to experience the same quality of resonance as the first.
-        <em>He is the reason Resonara can be trusted.</em>
+      <div class="team-card fade-up">
+        <div class="team-role">The Current</div>
+        <div class="team-name">Abhinav Kushwaha</div>
+        <div class="team-desc">
+          Electronics engineer and the intelligence behind Resonara's automation. Abhinav translates intention into circuit — the exact amplitude modulation, the calibrated strike-force control, the seamless repeatability that allows a thousand users to experience the same quality of resonance as the first.
+          <em>He is the reason Resonara can be trusted.</em>
+        </div>
+        <div class="team-quote">"The master practitioner has always known what frequency heals. We are simply making sure more people can receive it."</div>
       </div>
-      <div class="team-quote">"The master practitioner has always known what frequency heals. We are simply making sure more people can receive it."</div>
     </div>
-
-  </div>
-</section>
+  </section>
 
   <!-- ═══════════ CLOSING ═══════════ -->
   <div class="ornament"><span>✦</span></div>
@@ -460,30 +459,14 @@ import DarkLayout from "../layouts/DarkLayout.astro";
   }
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.6rem;
     max-width: 1100px;
     margin: 0 auto;
   }
-  @media (max-width: 900px) {
-    .team-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
   @media (max-width: 560px) {
     .team-grid {
       grid-template-columns: 1fr;
-    }
-  }
-  .team-grid .team-card:last-child:nth-child(3n + 2) {
-    grid-column: 2 / 3;
-  }
-  @media (max-width: 900px) {
-    .team-grid .team-card:last-child:nth-child(2n + 1) {
-      grid-column: 1 / -1;
-      max-width: 420px;
-      margin: 0 auto;
-      width: 100%;
     }
   }
 
@@ -603,17 +586,3 @@ import DarkLayout from "../layouts/DarkLayout.astro";
     transform: translateY(0);
   }
 </style>
-
-<script>
-  const obs = new IntersectionObserver(
-    (entries) =>
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          obs.unobserve(e.target);
-        }
-      }),
-    { threshold: 0.08 },
-  );
-  document.querySelectorAll(".fade-up").forEach((el) => obs.observe(el));
-</script>

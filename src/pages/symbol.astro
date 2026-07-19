@@ -1,8 +1,6 @@
 ---
 import DarkLayout from "../layouts/DarkLayout.astro";
 import { Image } from "astro:assets";
-import ResonaraLogoFull from "../assets/ResonaraLogoFull.png";
-import ResonaraSymbol from "../assets/ResonaraSymbol.png";
 import ResonaraSymbol1 from "../assets/ResonaraSymbol1.jpg";
 import ResonaraLusture from "../assets/ResonaraLusture.jpg";
 ---
@@ -16,7 +14,7 @@ import ResonaraLusture from "../assets/ResonaraLusture.jpg";
     <div class="hero-inner fade-up">
       <div class="hero-eyebrow">The Mark</div>
       <div class="logo-plaque">
-        <Image src={ResonaraLusture} alt="The Resonara logo — a mandala and gear enclosing a singing bowl and mallet, with the Resonara wordmark" width={900} quality={85} loading="eager" />
+        <Image src={ResonaraLusture} alt="The Resonara logo — a mandala and gear enclosing a singing bowl and mallet, with the Resonara wordmark" width={900} widths={[480, 720, 900]} sizes="(max-width: 768px) 92vw, 900px" quality={85} priority />
       </div>
       <h1 class="hero-title">The Story Behind the<br /><span>Resonara Symbol</span></h1>
     </div>
@@ -51,7 +49,7 @@ import ResonaraLusture from "../assets/ResonaraLusture.jpg";
       </div>
 
       <div class="symbol-feature fade-up">
-        <Image src={ResonaraSymbol1} alt="The Resonara symbol — singing bowl and mallet held within a mandala and gear" width={520} quality={85} loading="lazy" />
+        <Image src={ResonaraSymbol1} alt="The Resonara symbol — singing bowl and mallet held within a mandala and gear" width={520} widths={[260, 390, 520]} sizes="(max-width: 768px) 70vw, 520px" quality={85} loading="lazy" />
       </div>
 
       <div class="fade-up">
@@ -432,17 +430,3 @@ import ResonaraLusture from "../assets/ResonaraLusture.jpg";
     transform: translateY(0);
   }
 </style>
-
-<script>
-  const obs = new IntersectionObserver(
-    (entries) =>
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          obs.unobserve(e.target);
-        }
-      }),
-    { threshold: 0.08 },
-  );
-  document.querySelectorAll(".fade-up").forEach((el) => obs.observe(el));
-</script>

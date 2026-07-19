@@ -160,10 +160,3 @@ import DarkLayout from "../layouts/DarkLayout.astro";
     transform: translateY(0);
   }
 </style>
-
-<script>
-  // 404 is rendered statically; reveal immediately on load.
-  requestAnimationFrame(() => {
-    document.querySelectorAll(".fade-up").forEach((el) => el.classList.add("visible"));
-  });
-</script>
