@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import "../styles/fonts.css";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 
 const { title, description = "Silence of Mind. Science of Sound." } = Astro.props;
 ---
@@ -16,5 +17,6 @@ const { title, description = "Silence of Mind. Science of Sound." } = Astro.prop
   </head>
   <body class="font-sans antialiased">
     <slot />
+    <WhatsAppButton />
   </body>
 </html>
