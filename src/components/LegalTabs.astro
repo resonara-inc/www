@@ -1,0 +1,21 @@
+---
+interface Props {
+  active: "privacy" | "terms" | "disclaimer";
+}
+const { active } = Astro.props;
+const tabs = [
+  { key: "privacy", href: "/privacy/", label: "Privacy" },
+  { key: "terms", href: "/terms/", label: "Terms of use" },
+  { key: "disclaimer", href: "/disclaimer/", label: "Wellness disclaimer" },
+];
+---
+
+<div class="legal-tabs">
+  {
+    tabs.map((tab) => (
+      <a href={tab.href} class:list={["chip-btn", { "is-active": tab.key === active }]} aria-current={tab.key === active ? "page" : undefined}>
+        {tab.label}
+      </a>
+    ))
+  }
+</div>

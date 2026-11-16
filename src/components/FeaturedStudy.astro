@@ -1,0 +1,106 @@
+---
+/**
+ * Featured study card: Rio-Alamos et al., 2023, with a chart of heart rate variability over the 45-minute session.
+ * The chart is drawn at build time from the group means published in the paper.
+ */
+interface Props {
+  /** Adds the study-design paragraph and drops the top margin (research page). */
+  full?: boolean;
+}
+const { full = false } = Astro.props;
+
+// HRV (RMSSD, ms) at 0, 15, 30 and 45 minutes.
+const minutes = [0, 15, 30, 45];
+const series = [
+  { values: [34.8, 30.5, 29.4, 28.3], color: "var(--ink-2)", dashed: true }, // silence
+  { values: [36.2, 32.0, 34.1, 37.1], color: "var(--sage)", dashed: false }, // progressive muscle relaxation
+  { values: [35.2, 36.5, 48.4, 42.0], color: "var(--copper)", dashed: false }, // singing bowls
+];
+
+const L = 46;
+const R = 400;
+const T = 18;
+const B = 246;
+const yMin = 25;
+const yMax = 50;
+const xs = minutes.map((m) => L + (m * (R - L)) / 45);
+const y = (value: number) => B - ((value - yMin) * (B - T)) / (yMax - yMin);
+const linePath = (values: number[]) => values.map((value, i) => `${i ? "L" : "M"}${xs[i].toFixed(1)} ${y(value).toFixed(1)}`).join(" ");
+const gridValues = [25, 30, 35, 40, 45, 50];
+---
+
+<div class="featured" style={full ? "margin-top:0" : undefined}>
+  <div class="stack" style="gap:0">
+    <span class="eyebrow">Featured study</span>
+    <h3>One session. Measurable calm.</h3>
+    <p class="muted">
+      In a 2023 randomized controlled trial, a single live singing-bowl session raised heart rate variability by 37% and cut anxiety by 21%, a stronger relaxation response than progressive muscle
+      relaxation.
+    </p>
+    <div class="stat-pair">
+      <div><b>+37%</b><span>heart rate variability by minute 30</span></div>
+      <div><b>−21%</b><span>anxiety after one session</span></div>
+    </div>
+    <p class="cite">Rio-Alamos et al., 2023 · Austral University of Chile and Universitat Autònoma de Barcelona · 50 adults with high everyday anxiety.</p>
+    {
+      full && (
+        <p class="small muted" style="margin-top:14px">
+          Design: a registered, single-blind randomized trial. Each participant had one live session of four bowls, played in the same sequence each time, or progressive muscle relaxation, or waited
+          in silence. HRV and EEG were recorded at 0, 15, 30 and 45 minutes. Anxiety fell 21% with bowls, 16% with muscle relaxation and 4% in silence; bowls beat muscle relaxation on HRV, while the
+          gap on anxiety wasn't statistically significant.
+        </p>
+      )
+    }
+    <p style="margin-top:16px">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9955072/" target="_blank" rel="noopener" class="link-arrow">Read the study →</a>
+    </p>
+  </div>
+  <figure style="min-width:0">
+    <div class="legend">
+      <span><i style="background:var(--copper)"></i>Singing bowls</span>
+      <span><i style="background:var(--sage)"></i>Muscle relaxation</span>
+      <span><i style="background:var(--ink-2)"></i>Silence</span>
+    </div>
+    <div class="chart-wrap">
+      <svg
+        viewBox="0 0 540 276"
+        role="img"
+        aria-label="Heart rate variability over 45 minutes: singing bowls rise from 35.2 to 48.4 ms at minute 30, muscle relaxation stays between 32 and 37, silence falls to 28.3"
+      >
+        {
+          gridValues.map((value) => (
+            <>
+              <line x1={L} x2={R} y1={y(value).toFixed(1)} y2={y(value).toFixed(1)} stroke="var(--line)" />
+              <text class="svg-label" x={L - 8} y={(y(value) + 4).toFixed(1)} text-anchor="end">
+                {value}
+              </text>
+            </>
+          ))
+        }
+        {
+          minutes.map((minute, i) => (
+            <text class="svg-label" x={xs[i].toFixed(1)} y={B + 18} text-anchor="middle">
+              {minute} min
+            </text>
+          ))
+        }
+        <text class="svg-label" x="0" y="10">HRV (RMSSD, ms)</text>
+        {
+          series.map((s) => (
+            <>
+              <path d={linePath(s.values)} fill="none" stroke={s.color} stroke-width="2.2" stroke-dasharray={s.dashed ? "5 5" : undefined} />
+              {s.values.map((value, i) => (
+                <circle cx={xs[i].toFixed(1)} cy={y(value).toFixed(1)} r="3.5" fill={s.color} />
+              ))}
+            </>
+          ))
+        }
+        <text class="svg-label" x={R + 10} y={(y(42.0) + 4).toFixed(1)} style="fill:var(--copper)">Singing bowls</text>
+        <text class="svg-label" x={R + 10} y={(y(37.1) + 4).toFixed(1)}>Muscle relaxation</text>
+        <text class="svg-label" x={R + 10} y={(y(28.3) + 4).toFixed(1)}>Silence</text>
+        <text class="svg-strong" x={(xs[2] + 10).toFixed(1)} y={(y(48.4) - 6).toFixed(1)} style="fill:var(--copper)">48.4 ms at minute 30 (+37%)</text>
+      </svg>
+    </div>
+    <figcaption class="small muted" style="margin-top:6px">Heart rate variability, higher means more rest-and-recover activity.</figcaption>
+  </figure>
+</div>

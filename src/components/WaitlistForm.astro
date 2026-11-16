@@ -1,0 +1,152 @@
+---
+/**
+ * Waitlist form. Submissions are stored by Netlify Forms under the name "waitlist".
+ * Every instance must keep the same field names, since Netlify registers one form per name.
+ */
+import { SEGMENTS, type Segment } from "../config/site";
+import { COUNTRIES, TOP_COUNTRIES } from "../data/countries";
+
+interface Props {
+  /** Unique per page: prefixes field ids and is submitted as `source` so we know which page the form was on. */
+  id: string;
+  /** Preselects the venue type. On pages without it, a `?seg=` query parameter is honoured instead. */
+  segment?: Segment;
+}
+const { id, segment } = Astro.props;
+const p = `wl-${id}`;
+const otherCountries = COUNTRIES.filter((country) => !(TOP_COUNTRIES as readonly string[]).includes(country));
+---
+
+<form class="form-card" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-wl-form>
+  <input type="hidden" name="form-name" value="waitlist" />
+  <input type="hidden" name="source" value={id} />
+  <!-- Subject of the notification email. The script below makes it specific just before sending. -->
+  <input type="hidden" name="subject" value="New waitlist signup" />
+  <p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+  <div class="form-grid">
+    <div class="field"><label for={`${p}-name`}>Name</label><input id={`${p}-name`} name="name" required autocomplete="name" /></div>
+    <div class="field"><label for={`${p}-email`}>Email</label><input id={`${p}-email`} name="email" type="email" required autocomplete="email" /></div>
+    <div class="field">
+      <label for={`${p}-seg`}>I'm a…</label>
+      <select id={`${p}-seg`} name="segment" required>
+        <option value="">Choose one</option>
+        {Object.entries(SEGMENTS).map(([key, label]) => <option value={key} selected={key === segment}>{label}</option>)}
+      </select>
+    </div>
+    <div class="field">
+      <label for={`${p}-org`}>Organization <span class="opt">(optional)</span></label><input id={`${p}-org`} name="org" autocomplete="organization" />
+    </div>
+    <div class="field"><label for={`${p}-city`}>City</label><input id={`${p}-city`} name="city" required autocomplete="address-level2" /></div>
+    <div class="field">
+      <label for={`${p}-country`}>Country</label>
+      <select id={`${p}-country`} name="country" required autocomplete="country-name">
+        <option value="">Choose a country</option>
+        {TOP_COUNTRIES.map((country) => <option value={country}>{country}</option>)}
+        <option disabled>──────────</option>
+        {otherCountries.map((country) => <option value={country}>{country}</option>)}
+      </select>
+    </div>
+    <div class="field">
+      <label for={`${p}-locs`}>Number of locations <span class="opt">(optional)</span></label><input id={`${p}-locs`} name="locations" type="number" min="1" inputmode="numeric" />
+    </div>
+    <div class="field full"><label for={`${p}-msg`}>What interests you? <span class="opt">(optional)</span></label><textarea id={`${p}-msg`} name="message"></textarea></div>
+    <label class="consent" for={`${p}-consent`}>
+      <input type="checkbox" id={`${p}-consent`} name="consent" value="yes" /><span>Email me about Resonara in my area. Unsubscribe any time.</span>
+    </label>
+  </div>
+  <div class="form-foot">
+    <button type="submit" class="btn btn-primary">Join the waitlist</button>
+    <p>No spam. We'll only reach out about Resonara in your area.</p>
+  </div>
+  <p class="form-error small" role="alert" hidden></p>
+</form>
+
+<template data-wl-confirm>
+  <div class="form-card confirm" tabindex="-1">
+    <span class="eyebrow" style="margin:0">You're on the list</span>
+    <h3>Thank you. We'll be in touch when Resonara reaches <span data-wl-place></span>.</h3>
+    <p class="muted">Saved as: <span data-wl-segment></span>. Know another venue that would love this? Share resonara.com with a colleague.</p>
+    <div class="row">
+      <button type="button" class="btn btn-ghost" data-copy-site>Copy the link to share</button>
+      <a href="/research/" class="link-arrow">Read the research →</a>
+    </div>
+  </div>
+</template>
+
+<script>
+  import { CONTACT_EMAIL, SEGMENTS } from "../config/site";
+  import { submitNetlifyForm } from "../scripts/netlify-form";
+  import { toast } from "../scripts/toast";
+  import { guessVisitor, VISITOR_COUNTRY } from "../scripts/visitor";
+
+  type Field = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
+  const forms = document.querySelectorAll<HTMLFormElement>("[data-wl-form]");
+  const template = document.querySelector<HTMLTemplateElement>("template[data-wl-confirm]");
+  const visitorCountry = VISITOR_COUNTRY[guessVisitor()];
+  const segmentFromQuery = new URLSearchParams(location.search).get("seg");
+
+  function labelText(form: HTMLFormElement, field: Field): string {
+    const label = form.querySelector(`label[for="${field.id}"]`);
+    return label?.childNodes[0]?.textContent?.trim() || field.name;
+  }
+
+  forms.forEach((form) => {
+    const segment = form.elements.namedItem("segment") as HTMLSelectElement;
+    const country = form.elements.namedItem("country") as HTMLSelectElement;
+    const city = form.elements.namedItem("city") as HTMLInputElement;
+    const subject = form.elements.namedItem("subject") as HTMLInputElement;
+    const error = form.querySelector<HTMLElement>(".form-error");
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (!error || !submit) return;
+
+    form.noValidate = true; // Validation messages are shown in the page's own style.
+    if (visitorCountry && !country.value) country.value = visitorCountry;
+    if (segmentFromQuery && segmentFromQuery in SEGMENTS && !segment.value) segment.value = segmentFromQuery;
+
+    const fail = (message: string) => {
+      error.textContent = message;
+      error.hidden = false;
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const missing = Array.from(form.querySelectorAll<Field>("[required]")).filter((field) => !field.value.trim() || !field.checkValidity());
+      if (missing.length) {
+        fail(`Please fill in: ${missing.map((field) => labelText(form, field)).join(", ")}.`);
+        missing[0].focus();
+        return;
+      }
+
+      error.hidden = true;
+      submit.disabled = true;
+      const submitLabel = submit.textContent;
+      submit.textContent = "Sending…";
+      const place = `${city.value.trim()}, ${country.value}`;
+      const venue = SEGMENTS[segment.value as keyof typeof SEGMENTS] ?? "";
+      subject.value = `Waitlist: ${venue} in ${place}`;
+      try {
+        await submitNetlifyForm(form);
+      } catch {
+        submit.disabled = false;
+        submit.textContent = submitLabel;
+        fail(`Sorry, we couldn't save that. Please try again, or email ${CONTACT_EMAIL}.`);
+        return;
+      }
+
+      const confirm = template?.content.firstElementChild?.cloneNode(true) as HTMLElement | undefined;
+      if (!confirm) return;
+      confirm.querySelector("[data-wl-place]")!.textContent = place;
+      confirm.querySelector("[data-wl-segment]")!.textContent = venue;
+      form.replaceWith(confirm);
+      confirm.focus();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element) || !event.target.closest("[data-copy-site]")) return;
+    const fallback = () => toast("Copy resonara.com to share.");
+    if (!navigator.clipboard) return fallback();
+    navigator.clipboard.writeText("https://resonara.com").then(() => toast("Link copied."), fallback);
+  });
+</script>

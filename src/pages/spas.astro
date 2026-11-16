@@ -1,0 +1,120 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Faq from "../components/Faq.astro";
+import ProofBand from "../components/ProofBand.astro";
+import WaitlistForm from "../components/WaitlistForm.astro";
+import spaImage from "../assets/site/spa.jpg";
+---
+
+<SiteLayout
+  title="For spas and wellness resorts | Resonara"
+  description="Live singing-bowl sound for spas and wellness resorts. Your therapists calm the body; Resonara calms the mind."
+  nav="solutions"
+>
+  <section class="page-hero">
+    <div class="wrap sol-hero">
+      <div class="sol-copy">
+        <span class="eyebrow">For spas &amp; wellness resorts</span>
+        <h1>Your therapists calm the body. Resonara calms the mind.</h1>
+        <p class="lede">
+          Add a new modality to your menu: real singing bowls, played live in the room. Offer it as a session on its own, or pair it with massage, so the mind settles while the body is cared for. For
+          hotel spas, day spas and wellness resorts.
+        </p>
+        <div class="row">
+          <a href="/waitlist/?seg=spa" class="btn btn-primary">Join the waitlist</a><button type="button" class="btn btn-ghost" data-spec>Download the spec sheet</button>
+        </div>
+      </div>
+      <Image
+        src={spaImage}
+        alt="A therapist gives a back massage in a spa treatment room, with the Resonara instrument playing nearby"
+        class="hero-img"
+        widths={[480, 800, 1200]}
+        sizes="(max-width: 860px) 100vw, 540px"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="benefits">
+        <div class="benefit">
+          <h3>A new modality for your menu</h3>
+          <p>Live sound joins massage, facials and bodywork as a service of its own, or as an add-on that makes a familiar treatment feel new. One more reason for guests to book.</p>
+        </div>
+        <div class="benefit">
+          <h3>Body and mind, in one treatment</h3>
+          <p>
+            While your therapist releases tension in the body, live singing bowls guide the mind toward calm. In a randomized controlled trial, one singing-bowl session cut anxiety by 21%.
+          </p>
+        </div>
+        <div class="benefit">
+          <h3>Premium, and simple to run</h3>
+          <p>
+            Solid teak and hand-forged bronze bowls on padded cradles, quiet by design. Your team starts a session from our app in a few taps, and it plays the same way in every room and at every
+            location.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-surface" style="border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Two ways to offer it</span><h2>On its own, or alongside massage.</h2></div>
+      <div class="ways">
+        <div class="way">
+          <span class="status">Standalone session</span>
+          <h3>A live sound bath</h3>
+          <p class="muted">In a relaxation room, meditation room or private suite. Choose a program and one of its preset lengths in the app, and the bowls play live for your guests.</p>
+        </div>
+        <div class="way">
+          <span class="status">Paired with massage</span>
+          <h3>Sound for the mind, hands for the body</h3>
+          <p class="muted">
+            Resonara plays in the treatment room while the massage runs. Your therapist works on the body while the bowls work on the mind. It's sound only, so nothing extra touches the guest.
+          </p>
+        </div>
+      </div>
+      <div class="stack" style="margin-top:clamp(32px,4vw,48px)">
+        <span class="eyebrow" style="margin:0">Where it fits</span>
+        <ul class="fits">
+          <li>Massage treatment rooms</li>
+          <li>Couples suites</li>
+          <li>Relaxation lounges</li>
+          <li>Meditation rooms</li>
+          <li>Wellness retreats</li>
+          <li>Arrival and recovery packages</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">How the partnership works</span><h2>Installed, calibrated and maintained by us.</h2></div>
+      <ol class="flow">
+        <li><b>We install</b><p>We place and calibrate the instrument in your spa. It rolls between rooms on castors.</p></li>
+        <li><b>You schedule</b><p>Your team picks a program and a preset length in the app for each session or treatment.</p></li>
+        <li><b>We maintain</b><p>Servicing, calibration, updates and bowl care, the same standard at every location.</p></li>
+      </ol>
+      <ProofBand />
+    </div>
+  </section>
+
+  <section class="band band-surface" style="border-top:1px solid var(--line)">
+    <div class="wrap split">
+      <div class="section-head" style="margin:0"><span class="eyebrow">Spa questions</span><h2>What spa directors ask first.</h2></div>
+      <Faq group="spa" />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head"><h2>Bring Resonara to your spa.</h2></div>
+      <WaitlistForm id="spas" segment="spa" />
+    </div>
+  </section>
+</SiteLayout>

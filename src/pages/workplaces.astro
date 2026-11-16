@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Faq from "../components/Faq.astro";
+import ProofBand from "../components/ProofBand.astro";
+import WaitlistForm from "../components/WaitlistForm.astro";
+import workImage from "../assets/site/work.jpg";
+---
+
+<SiteLayout
+  title="For workplaces | Resonara"
+  description="A live singing-bowl sound bath for sleeping pods, wellness rooms and team resets. A reset for employees and teams that never stop."
+  nav="solutions"
+>
+  <section class="page-hero">
+    <div class="wrap sol-hero">
+      <div class="sol-copy">
+        <span class="eyebrow">For workplaces</span>
+        <h1>A reset for employees and teams that never stop.</h1>
+        <p class="lede">Fifteen minutes of live sound. Back to work calm and focused. Easy to set up and run: on demand and self-serve.</p>
+        <div class="row">
+          <a href="/waitlist/?seg=workplace" class="btn btn-primary">Join the waitlist</a><button type="button" class="btn btn-ghost" data-spec>Download the spec sheet</button>
+        </div>
+      </div>
+      <Image
+        src={workImage}
+        alt="Employees resting in recliners in an office wellness room beside the Resonara instrument"
+        class="hero-img"
+        widths={[480, 800, 1200]}
+        sizes="(max-width: 860px) 100vw, 540px"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="benefits">
+        <div class="benefit">
+          <h3>Stress relief where people work</h3>
+          <p>In a randomized controlled trial, one singing-bowl session cut anxiety by 21%. People come back calmer, clearer and ready to focus.</p>
+        </div>
+        <div class="benefit">
+          <h3>On demand and self-serve</h3>
+          <p>Pick a program and a preset length in the app and press start. No bookings to arrange, no setup.</p>
+        </div>
+        <div class="benefit">
+          <h3>Show it's working</h3>
+          <p>Session reports show sessions run, by space and over time, so you can report your wellbeing program upward.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-tight band-surface" style="border-block:1px solid var(--line)">
+    <div class="wrap split">
+      <div class="quote-block">
+        <span class="eyebrow">Sharpen first</span>
+        <p>
+          Before the first swing, the woodcutter sharpens his axe. A Resonara session is the sharpening: a few minutes of live sound before the day asks for everything. Sharpen first. Then swing.
+        </p>
+      </div>
+      <div class="stack">
+        <span class="eyebrow" style="margin:0">Where it fits</span>
+        <ul class="fits">
+          <li>Sleeping pods</li>
+          <li>Wellness rooms</li>
+          <li>15-minute resets</li>
+          <li>Team offsites</li>
+          <li>Wellness weeks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">How the partnership works</span><h2>Set up once. Run it any time.</h2></div>
+      <ol class="flow">
+        <li><b>We install</b><p>We place and calibrate the instrument in your wellness room.</p></li>
+        <li><b>You schedule</b><p>Anyone can start a program in the app, or you can set a timetable.</p></li>
+        <li><b>We maintain</b><p>Servicing, calibration, updates and bowl care, plus session reports.</p></li>
+      </ol>
+      <ProofBand />
+    </div>
+  </section>
+
+  <section class="band band-surface" style="border-top:1px solid var(--line)">
+    <div class="wrap split">
+      <div class="section-head" style="margin:0"><span class="eyebrow">Workplace questions</span><h2>What people teams ask first.</h2></div>
+      <Faq group="workplace" />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head"><h2>Bring Resonara to your workplace.</h2></div>
+      <WaitlistForm id="workplaces" segment="workplace" />
+    </div>
+  </section>
+</SiteLayout>

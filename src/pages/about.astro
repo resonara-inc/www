@@ -1,0 +1,168 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { CONTACT_EMAIL, LEGAL_NAME } from "../config/site";
+import { FOUNDERS } from "../data/team";
+
+const symbolParts = [
+  {
+    title: "The bowl and the mallet",
+    text: "At the centre, a mallet meets a bowl: a simple act Himalayan monks have practised for centuries. The sound is never forced. It rises from that contact and travels outward in waves you can feel in the body. Every Resonara session begins with this moment.",
+  },
+  {
+    title: "The mandala and the gear",
+    text: "The outer petals form a mandala, the Vedic map of order within complexity. The same edge is also the teeth of a gear: the engineering behind every calibrated strike and every frequency chosen with purpose. Monastery and laboratory, in one outline.",
+  },
+  {
+    title: "The lock and the key",
+    text: "Look once more and the bowl closes like a lock, while the upright mallet stands like a key. One door opens inward, to a self usually drowned out by noise. The other opens outward, to an idea many traditions share: that everything vibrates.",
+  },
+  {
+    title: "The name",
+    text: "Resonance is when one vibrating object sets another moving at the same frequency, by invitation rather than force. In a session you settle into the rhythm of the bowls. In a group, a room often finds its breathing falling into step, an echo of the sangha: we are connected.",
+  },
+  {
+    title: "The hum",
+    text: "\"Mmm\" may be the most human sound: the hum of Bhramari, the bee breath, and of a moment of quiet insight. Beneath it sits Nada Brahma, the Vedic idea that the universe is sound. The bowl reminds you of something you already know.",
+  },
+];
+---
+
+<SiteLayout
+  title="About us | Resonara"
+  description="Born from one sound bath, built by a family of practitioners. Meet the founders and the story behind the Resonara symbol."
+  nav="about"
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">About Resonara</span>
+      <h1>Born from one sound bath. Built by a family of practitioners.</h1>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap story-wrap">
+      <div class="story-part">
+        <div class="story-side"><span class="eyebrow">October 2024 · Singapore</span><h2>The loss</h2></div>
+        <div class="stack">
+          <p class="story">Resonara did not begin in a lab, a boardroom or a pitch deck. It began with a question that grief asked.</p>
+          <p class="muted measure">
+            In October 2024, Ajay Sharma lost his father. He had spent twenty-five years in Asian capital markets, reading signals in noise and staying calm when others could not. But grief does not
+            respond to analysis. For the first time in a long time, he did not know what to do with stillness.
+          </p>
+          <p class="muted measure">
+            His wife Shalini, a certified yoga therapist with a PhD in Pharmaceutics, did not offer a solution. She offered a direction. Go to a sound bath, she said. Just go.
+          </p>
+        </div>
+      </div>
+      <div class="story-part">
+        <div class="story-side"><span class="eyebrow">10 November 2024</span><h2>The session</h2></div>
+        <div class="stack">
+          <p class="story">A single session in Singapore, surrounded by many bowls. It lasted less than an hour. What it produced lingered for days.</p>
+          <p class="muted measure">
+            Not comfort, exactly, and not closure. Something older and quieter than either: a state the mind recognises before it can name it. Ajay knew he had not felt it before, and that he needed
+            to feel it again.
+          </p>
+          <p class="muted measure">
+            The question arrived before the session had ended. A gifted practitioner created this. But what about the days between sessions, and the many people who will never find their way to a
+            room like this one?
+          </p>
+          <blockquote class="quote-block">
+            <p>
+              The practitioner who led that session gave something irreplaceable. What we wanted was for that gift, that exact quality of resonance, to reach beyond the one room, the one hour, the
+              one appointment.
+            </p>
+            <footer class="small muted" style="margin-top:10px">Ajay Sharma, Co-Founder &amp; Inventor</footer>
+          </blockquote>
+        </div>
+      </div>
+      <div class="story-part">
+        <div class="story-side"><span class="eyebrow">That evening</span><h2>The huddle</h2></div>
+        <div class="stack">
+          <p class="story">Jayesha was in Singapore that day, and saw the shift in her father when he came home. She simply said: "Let's build it."</p>
+          <p class="muted measure">
+            That evening the three of them, Ajay, Shalini and Jayesha, sat together and made a commitment. Over the next few months they went deep into the science: the physics of sound, EEG and
+            heart rate variability studies, the metallurgy of Himalayan bowls, and the long tradition of Nada Yoga, the yoga of sound.
+          </p>
+          <p class="muted measure">
+            The more they read, the more certain they became. The tradition was real, and so was the research. What was missing was precision engineering. So they found the people who could build
+            what they could see.
+          </p>
+          <p class="muted measure">
+            The aim has never changed: to extend the reach of what skilled practitioners have always known, not to replace them. A gifted sound practitioner brings intuition, presence and attunement
+            that no instrument can replicate. Resonara carries the live sound of the bowls into the moments in between.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-surface" style="border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">The team</span><h2>Founders</h2></div>
+      <div class="team-grid">
+        {
+          FOUNDERS.map((person) => (
+            <div class="person">
+              <Image src={person.photo} alt={person.name} class="avatar" style="object-fit:cover" widths={[240, 480, 800]} sizes="(max-width: 560px) 50vw, 290px" />
+              <h3>{person.name}</h3>
+              <span class="title">{person.title}</span>
+              <p>{person.bio}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Our principles</span><h2>What we hold to.</h2></div>
+      <div class="principles">
+        <div><b>Respect the practice</b><p>Resonara holds the sound. People may still guide the experience.</p></div>
+        <div><b>Honest science</b><p>Bold claims, always cited, with the limits stated plainly.</p></div>
+        <div><b>Wellbeing, not medicine</b><p>For relaxation and general wellbeing. Never a treatment.</p></div>
+        <div><b>Consistency</b><p>Every session plays exactly as composed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-surface" id="symbol" style="border-block:1px solid var(--line);scroll-margin-top:70px">
+    <div class="wrap">
+      <div class="symbol">
+        <div class="symbol-mark" role="img" aria-label="The Resonara symbol: a mandala and a gear around a bowl and mallet"></div>
+        <div class="stack">
+          <span class="eyebrow" style="margin:0">The symbol</span>
+          <h2>A mark that reveals itself slowly.</h2>
+          <p class="muted measure">At first glance it is a mandala, a bowl and a mallet. Look again, and it holds the whole story of Resonara.</p>
+        </div>
+      </div>
+      <ol class="mark-parts">
+        {
+          symbolParts.map((part, i) => (
+            <li>
+              <span class="mp-num">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{part.title}</h3>
+              <p>{part.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mark-close">Ancient and modern, self and universe, science and spirit: not opposites, but one resonance.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="locs" style="margin:0">
+        <div class="loc"><span class="status">Office</span><h3>Singapore</h3><p class="muted small">{LEGAL_NAME}</p></div>
+        <div class="loc"><span class="status">Office</span><h3>California, USA</h3><p class="muted small">Americas</p></div>
+        <div class="loc">
+          <span class="status">Contact</span>
+          <h3>Get in touch</h3>
+          <p class="muted small">General, investors and press: <a href={`mailto:${CONTACT_EMAIL}`} class="mono">{CONTACT_EMAIL}</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
