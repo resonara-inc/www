@@ -43,6 +43,12 @@ public/            favicon, robots.txt, sitemap.xml
 
 Add a page by creating `src/pages/<name>.astro` that wraps its content in `SiteLayout`, then add it to `public/sitemap.xml`.
 
+## Loading speed
+
+- Page links are prefetched on hover or focus (`prefetch` in `astro.config.mjs`), so navigation feels instant. Only the HTML is fetched; the target page's scripts, analytics included, do not run until it is opened.
+- The heading and body fonts are preloaded in `SiteLayout.astro`. If a font file in `site.css` changes, update the matching import there.
+- Cloudflare sits in front of Netlify and caches pages and assets; the setup is described in `TODO.md` and in the comments in `netlify.toml`.
+
 ## Themes
 
 The site has a light and a dark palette that swap the same CSS tokens (top of `site.css`). It follows the visitor's system setting by default; the switch in the footer (`ThemeSwitch.astro`) stores an explicit Light or Dark choice in `localStorage` and sets `<html data-theme>`. When changing dark colours, update both dark blocks in `site.css`.

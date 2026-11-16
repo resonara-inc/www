@@ -6,6 +6,10 @@ import Footer from "../components/Footer.astro";
 import SpecModal from "../components/SpecModal.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
 import productImage from "../assets/site/product.jpg";
+// The two fonts above the fold on every page: headings and body text. Preloading them avoids the swap from
+// the fallback font. These resolve to the same hashed files that site.css refers to.
+import bodyFont from "@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url";
+import headingFont from "@fontsource/marcellus/files/marcellus-latin-400-normal.woff2?url";
 import { FEATURES, SITE_NAME } from "../config/site";
 
 interface Props {
@@ -46,6 +50,8 @@ const ogImage = new URL((await getImage({ src: productImage, width: 1200, format
     <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)" data-scheme="light" />
     <meta name="theme-color" content="#1B1B18" media="(prefers-color-scheme: dark)" data-scheme="dark" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={bodyFont} crossorigin />
     {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />}
     <!-- Apply a stored light/dark choice before first paint. Without one, the CSS follows the system setting. -->
     <script is:inline>
