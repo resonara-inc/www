@@ -1,0 +1,91 @@
+---
+import { NAV_LINKS, NAV_LINKS_AFTER, SOLUTIONS } from "../config/site";
+
+interface Props {
+  /** Key of the active section: a NAV_LINKS key, or "solutions" for the three venue pages. */
+  nav?: string;
+}
+const { nav } = Astro.props;
+---
+
+<header class="site-header" id="site-header">
+  <div class="wrap header-row">
+    <a href="/" class="logo" aria-label="Resonara home"><span class="logo-mark"></span><span class="logo-word"></span></a>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      {
+        NAV_LINKS.map((link) => (
+          <a href={link.href} class:list={{ "is-active": nav === link.key }} aria-current={nav === link.key ? "page" : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+      <div class="dropdown" id="sol-dd">
+        <button type="button" class:list={["nav-drop", { "is-active": nav === "solutions" }]} id="sol-btn" aria-expanded="false" aria-controls="sol-menu">
+          Solutions
+          <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
+        </button>
+        <div class="drop-menu" id="sol-menu">
+          {
+            SOLUTIONS.map((item) => (
+              <a href={item.href}>
+                {item.label}
+                <span>{item.note}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      {
+        NAV_LINKS_AFTER.map((link) => (
+          <a href={link.href} class:list={{ "is-active": nav === link.key }} aria-current={nav === link.key ? "page" : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+      <a href="/waitlist/" class="btn btn-primary mobile-cta">Join the waitlist</a>
+    </nav>
+    <a href="/waitlist/" class="btn btn-primary header-cta">Join the waitlist</a>
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("site-header");
+  const menuBtn = document.getElementById("menu-btn");
+  const dropdown = document.getElementById("sol-dd");
+  const dropBtn = document.getElementById("sol-btn");
+
+  function closeDropdown() {
+    dropdown?.classList.remove("is-open");
+    dropBtn?.setAttribute("aria-expanded", "false");
+  }
+  function closeMenus() {
+    header?.classList.remove("open");
+    if (menuBtn) {
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.textContent = "Menu";
+    }
+    closeDropdown();
+  }
+
+  dropBtn?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const open = !dropdown?.classList.contains("is-open");
+    dropdown?.classList.toggle("is-open", open);
+    dropBtn.setAttribute("aria-expanded", String(open));
+  });
+
+  menuBtn?.addEventListener("click", () => {
+    const open = !header?.classList.contains("open");
+    header?.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.textContent = open ? "Close" : "Menu";
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element) || !event.target.closest("#sol-dd")) closeDropdown();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenus();
+  });
+</script>

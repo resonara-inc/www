@@ -1,0 +1,31 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Locations from "../components/Locations.astro";
+import WaitlistForm from "../components/WaitlistForm.astro";
+import { WHATSAPP_DISPLAY_NUMBER, whatsappLink } from "../config/contact";
+---
+
+<SiteLayout title="Join the waitlist | Resonara" description="Bring a live sound bath, on demand, to your yoga studio, workplace or spa. Join the Resonara waitlist.">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Waitlist and contact</span>
+      <h1>Bring Resonara to your space.</h1>
+      <p class="lede">We're partnering with a limited number of venues as we expand. Tell us about your space and we'll be in touch when Resonara reaches your city.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <WaitlistForm id="waitlist" />
+      <div class="stack">
+        <h2 style="font-size:var(--fs-xl)">Where we are</h2>
+        <Locations stack />
+        <div class="loc only-sg" hidden>
+          <span class="status">Singapore and Asia</span>
+          <h3 style="font-size:1.2rem">Message us on WhatsApp</h3>
+          <p class="small"><a href={whatsappLink()} target="_blank" rel="noopener" class="link-arrow">{WHATSAPP_DISPLAY_NUMBER} →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

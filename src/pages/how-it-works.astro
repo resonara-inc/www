@@ -1,0 +1,145 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import WaitlistForm from "../components/WaitlistForm.astro";
+import bowlsImage from "../assets/site/bowls.jpg";
+import malletsImage from "../assets/site/mallets.jpg";
+import cabinetImage from "../assets/site/cabinet.jpg";
+
+const figureSizes = "(max-width: 760px) 100vw, 720px";
+const figureWidths = [480, 800, 1448];
+---
+
+<SiteLayout
+  title="How it works | Resonara"
+  description="Three hand-forged bronze bowls, custom mallets and a solid teak cabinet, played live the same way every session. US patented technology."
+  nav="how-it-works"
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">How it works</span>
+      <h1>Three bronze bowls, played live, the same way every time.</h1>
+      <p class="lede">Resonara brings a live sound bath into your space on demand. Here is the instrument, how we tune it, and what it takes to host one.</p>
+      <div class="row"><a href="/waitlist/" class="btn btn-primary">Join the waitlist</a><button type="button" class="btn btn-ghost" data-spec>Download the spec sheet</button></div>
+    </div>
+  </section>
+
+  <section class="band-tight">
+    <div class="wrap">
+      <div class="hiw">
+        <h2>The problem</h2>
+        <div class="body">
+          <p>
+            A great sound bath takes a skilled practitioner, real bowls and hours of preparation. That's why it's rare. Resonara brings the live sound of a bowl to the in-between moments: before class,
+            between meetings, after check-in.
+          </p>
+        </div>
+      </div>
+      <div class="hiw">
+        <h2>The bowls</h2>
+        <div class="body">
+          <p>
+            Three hand-forged bronze bowls, <span class="mono">180</span>, <span class="mono">220</span> and <span class="mono">250 mm</span> across, in the classic bell-bronze ratio of about <span
+              class="mono">78%</span
+            > copper to <span class="mono">21%</span> tin. They are chosen as a set, to complement each other.
+          </p>
+          <Image
+            src={bowlsImage}
+            alt="Three hand-forged bronze bowls on padded cradles, each with its own mallets, on the teak cabinet"
+            class="hiw-img"
+            widths={figureWidths}
+            sizes={figureSizes}
+          />
+        </div>
+      </div>
+      <div class="hiw">
+        <h2>Calibrated in two steps</h2>
+        <div class="body">
+          <p>Before installation, every instrument is manually calibrated to deliver the best experience.</p>
+          <ol class="steps-2">
+            <li><span><strong>Bowl selection.</strong> We select a set of bowls that pair to produce alpha, theta and delta beats.</span></li>
+            <li><span><strong>Mallet and strike tuning.</strong> We tune each mallet and its strike speed to draw those beat frequencies out.</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="hiw">
+        <h2>A master's touch</h2>
+        <div class="body">
+          <p>
+            Two mallets per bowl, with the height, material and weight of each one customized for that bowl. The speed of every strike is set by the composition, so each bowl rings out the way a
+            master would play it.
+          </p>
+          <Image
+            src={malletsImage}
+            alt="Three mallets in front of the bowls: the material, weight and height of each mallet are matched to its bowl"
+            class="hiw-img"
+            widths={figureWidths}
+            sizes={figureSizes}
+          />
+        </div>
+      </div>
+      <div class="hiw">
+        <h2>Composed sessions</h2>
+        <div class="body"><p>Resonara composes the programs. Venues choose one, and one of its preset durations, in the app. It plays the same way every time.</p></div>
+      </div>
+      <div class="hiw">
+        <h2>Quality in every detail</h2>
+        <div class="body">
+          <p>A solid teak cabinet, hand-finished and lined with pure wool felt. The bowls rest on padded cradles.</p>
+          <Image
+            src={cabinetImage}
+            alt="The teak cabinet, with close-ups of its natural grain, hand finish and acoustic felt lining"
+            class="hiw-img"
+            widths={figureWidths}
+            sizes={figureSizes}
+          />
+        </div>
+      </div>
+      <div class="hiw">
+        <h2>Easy to host</h2>
+        <div class="body">
+          <p>It plugs into a standard outlet and rolls between rooms on castors. We install, calibrate and maintain it.</p>
+          <div class="table-wrap">
+            <table class="specs">
+              <tbody>
+                <tr><th scope="row">Footprint</th><td>About 105 × 43 cm</td></tr>
+                <tr><th scope="row">Weight</th><td>45 kg, on castors</td></tr>
+                <tr><th scope="row">Power</th><td>Standard outlet · under 60 W in a session · under 5 W on standby</td></tr>
+                <tr><th scope="row">Moving it</th><td>Between rooms at your location</td></tr>
+                <tr><th scope="row">Where it goes</th><td>Indoors</td></tr>
+                <tr><th scope="row">Safety</th><td>Instant stop; motors switch off when idle</td></tr>
+                <tr><th scope="row">Updates</th><td>Updatable firmware, handled by us</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="hiw">
+        <h2>How the partnership works</h2>
+        <div class="body">
+          <ol class="flow">
+            <li><b>We install</b><p>We deliver the instrument, place it and calibrate it in your space.</p></li>
+            <li><b>You schedule</b><p>Pick programs and their preset lengths in the app, whenever you want a session.</p></li>
+            <li><b>We maintain</b><p>Servicing, calibration, updates and bowl care are on us.</p></li>
+          </ol>
+        </div>
+      </div>
+      <div class="hiw">
+        <h2>US Patented Technology</h2>
+        <div class="body">
+          <p>The way Resonara plays real bowls live, with a master's consistency, is protected by US patents.</p>
+          <div class="row" style="margin-top:18px">
+            <button type="button" class="btn btn-ghost" data-spec>Download the spec sheet</button><a href="/research/" class="link-arrow">See the research →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-surface" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head"><h2>Bring Resonara to your space.</h2></div>
+      <WaitlistForm id="hiw" />
+    </div>
+  </section>
+</SiteLayout>

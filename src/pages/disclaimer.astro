@@ -1,0 +1,26 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import LegalTabs from "../components/LegalTabs.astro";
+---
+
+<SiteLayout
+  title="Wellness disclaimer | Resonara"
+  description="Resonara supports relaxation and wellbeing. It is not a medical device and does not diagnose, treat or cure any condition."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Legal</span>
+      <h1>Wellness disclaimer</h1>
+      <LegalTabs active="disclaimer" />
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap legal">
+      <p class="lede">
+        Resonara sessions are designed for relaxation and general wellbeing. They are not a medical treatment and are not intended to diagnose, treat, cure or prevent any disease.
+      </p>
+      <p class="lede">Research cited on this site is independent; it studied singing bowls, including Tibetan (Himalayan) singing bowls like ours, not Resonara's instrument itself.</p>
+      <p class="lede">Anyone with a medical condition or concern should check with their doctor before joining a session.</p>
+    </div>
+  </section>
+</SiteLayout>

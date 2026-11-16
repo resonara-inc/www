@@ -1,0 +1,168 @@
+---
+/**
+ * "The science of calm": the brain-rhythm scale, how a bowl's beat arises, and where it lands.
+ * Shared by the home page (with the animated beat line on top) and the research page.
+ */
+interface Props {
+  id: string;
+  /** Draw the animated beat line across the top of the band. The page must load scripts/beat-canvas. */
+  canvas?: boolean;
+}
+const { id, canvas = false } = Astro.props;
+
+const rhythms = [
+  { name: "Gamma", hz: "30+ Hz", feel: "Peak alertness; intense, rapid processing", calm: false },
+  { name: "Beta", hz: "13–30 Hz", feel: "Busy and alert: meetings, commutes, a running to-do list", calm: false },
+  { name: "Alpha", hz: "8–13 Hz", feel: "Calm and present; awake, but at ease", calm: true },
+  { name: "Theta", hz: "4–8 Hz", feel: "Deep and inward; the rhythm of meditation", calm: true },
+  { name: "Delta", hz: "0.5–4 Hz", feel: "The slowest rhythm; deep rest and dreamless sleep", calm: true },
+];
+
+// Beat figure: three tones with visibly different, evenly spaced frequencies, so their sum pulses in a clear slow beat.
+const x0 = 118;
+const x1 = 505;
+const spread = 1 / 80;
+const mid = 1 / 14.1;
+const freqs = [mid + spread, mid, mid - spread];
+function wavePath(yMid: number, amp: number, fn: (x: number) => number): string {
+  let d = "";
+  for (let x = x0; x <= x1; x += 2) d += `${x === x0 ? "M" : "L"}${x} ${(yMid - amp * fn(x - x0)).toFixed(2)} `;
+  return d.trim();
+}
+const tone = (f: number) => (x: number) => Math.sin(2 * Math.PI * f * x);
+const sum = (x: number) => freqs.reduce((total, f) => total + Math.sin(2 * Math.PI * f * x), 0) / 3;
+const envelope = (x: number) => Math.abs(1 + 2 * Math.cos(2 * Math.PI * spread * x)) / 3;
+const tones = [
+  { label: "Tone 1", note: "higher", y: 34 },
+  { label: "Tone 2", note: "", y: 88 },
+  { label: "Tone 3", note: "lower", y: 142 },
+];
+---
+
+<section class="band band-night" id={id} style="scroll-margin-top:70px">
+  {canvas && <canvas class="beat-canvas" id="beat-canvas" aria-hidden="true" />}
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The science of calm</span>
+      <h2>Your brain has a rhythm. Calm lives at the slow end.</h2>
+      <p class="lede">
+        Your brain is always producing electrical rhythms, measured with EEG and named by their speed. Fast rhythms carry the busy, alert mind. Slower rhythms come with calm, meditation and deep rest.
+        To truly unwind, the brain has to shift down the scale.
+      </p>
+    </div>
+    <div class="scale" role="list" aria-label="Brain rhythms from fastest to slowest">
+      <div class="scale-head"><span>Rhythm</span><span>What it feels like</span></div>
+      {
+        rhythms
+          .filter((r) => !r.calm)
+          .map((r) => (
+            <div class="scale-row" role="listitem">
+              <div class="state-name">
+                <b>{r.name}</b>
+                <span>{r.hz}</span>
+              </div>
+              <p>{r.feel}</p>
+            </div>
+          ))
+      }
+      <div class="scale-calm">
+        <span class="calm-label">Calm lives here</span>
+        {
+          rhythms
+            .filter((r) => r.calm)
+            .map((r) => (
+              <div class="scale-row" role="listitem">
+                <div class="state-name">
+                  <b>{r.name}</b>
+                  <span>{r.hz}</span>
+                </div>
+                <p>{r.feel}</p>
+              </div>
+            ))
+        }
+      </div>
+    </div>
+    <div class="claims" style="margin-top:clamp(36px,5vw,56px)">
+      <div class="fig">
+        <h3>Meditation slows the brain.</h3>
+        <p class="muted" style="margin-top:10px">
+          A landmark review by researchers at UC San Diego and The Scripps Research Institute found that meditation is consistently linked to more alpha and theta activity, and an overall slowing of
+          brain rhythms.<sup>1</sup>
+        </p>
+      </div>
+      <div class="fig">
+        <h3>Deeper than ordinary rest.</h3>
+        <p class="muted" style="margin-top:10px">At the University of Sydney, theta and alpha rose further during meditation than during ordinary rest with eyes closed.<sup>2</sup></p>
+      </div>
+    </div>
+    <div class="speaks">
+      <h3>Singing bowls speak its language.</h3>
+      <p class="muted">
+        A hand-forged bowl never rings a single pure note. The small imperfections left by the hammer make it sing several close tones at once, and as they overlap, the sound pulses in a slow, rolling
+        beat at the pace of the brain's calmer rhythms. In a 2023 study at Jeju National University, listeners heard a Himalayan singing bowl whose beat pulsed at 6.68 Hz, in the theta range of
+        meditation. Within minutes, their brain activity at that exact frequency rose to about two and a half times its starting level, and theta activity rose with it.<sup>3</sup>
+      </p>
+    </div>
+    <div class="fig-pair">
+      <figure class="fig">
+        <svg class="beat-svg" viewBox="0 0 520 300" role="img" aria-label="Three close tones from one bowl combine into a sound that pulses in a slow beat">
+          {
+            tones.map((t, i) => (
+              <>
+                <text class="svg-label" x="0" y={t.y + 4}>
+                  {t.label}
+                </text>
+                {t.note && (
+                  <text class="svg-label" x="0" y={t.y + 18} style="opacity:.75">
+                    {t.note}
+                  </text>
+                )}
+                <path d={wavePath(t.y, 13, tone(freqs[i]))} fill="none" stroke="var(--ink-2)" stroke-width="1.2" />
+              </>
+            ))
+          }
+          <text class="svg-strong" x="0" y="226">What you hear</text>
+          <text class="svg-label" x="0" y="242">a slow beat</text>
+          <path d={wavePath(232, 46, envelope)} fill="none" stroke="var(--copper)" stroke-width="1" stroke-dasharray="3 4" opacity=".8"></path>
+          <path d={wavePath(232, -46, envelope)} fill="none" stroke="var(--copper)" stroke-width="1" stroke-dasharray="3 4" opacity=".8"></path>
+          <path d={wavePath(232, 46, sum)} fill="none" stroke="var(--copper)" stroke-width="1.6"></path>
+          <line x1={x0} x2={x1} y1="286" y2="286" stroke="var(--line)"></line>
+          <text class="svg-label" x={x1} y="298" text-anchor="end">time →</text>
+        </svg>
+        <figcaption>The beat: several close tones from one bowl pulse together in a slow beat.</figcaption>
+      </figure>
+      <figure class="fig beatlands" role="img" aria-label="The bowl's 6.68 Hz beat lands in the theta range, at the calm end of the brain-rhythm scale">
+        <div class="bl-grid">
+          <span class="bl-top bl-fast">Faster, busier</span>
+          <span class="bl-top bl-calm">The calm end</span>
+          <div class="bl-box"><b>Gamma</b><span>30+ Hz</span></div>
+          <div class="bl-box"><b>Beta</b><span>13–30 Hz</span></div>
+          <div class="bl-box calm"><b>Alpha</b><span>8–13 Hz</span></div>
+          <div class="bl-box calm target"><b>Theta</b><span>4–8 Hz</span></div>
+          <div class="bl-box calm"><b>Delta</b><span>0.5–4 Hz</span></div>
+          <div class="bl-arrow"></div>
+        </div>
+        <p class="bl-note"><b>The bowl's beat: 6.68 Hz</b><span>Brain activity at this frequency rose about 2.5×</span></p>
+        <figcaption>Where the beat lands. Kim and Choi, 2023: 17 adults, minutes of listening.</figcaption>
+      </figure>
+    </div>
+    <p class="lede" style="margin-top:clamp(28px,4vw,44px);max-width:68ch">
+      Resonara sessions are composed for that shift. Real bowls, played live and paced by their own slow beats, give a busy mind a rhythm to settle into, and somewhere quieter to go.
+    </p>
+    <div class="footnotes">
+      <span
+        ><sup>1</sup> Cahn &amp; Polich, 2006, <i>Psychological Bulletin</i>. <a href="https://doi.org/10.1037/0033-2909.132.2.180" target="_blank" rel="noopener">Read the review</a></span
+      >
+      <span
+        ><sup>2</sup> Lagopoulos et al., 2009, <i>Journal of Alternative and Complementary Medicine</i>. <a href="https://doi.org/10.1089/acm.2009.0113" target="_blank" rel="noopener"
+          >Read the study</a
+        ></span
+      >
+      <span
+        ><sup>3</sup> Kim &amp; Choi, 2023, <i>International Journal of Environmental Research and Public Health</i>. <a href="https://www.mdpi.com/1660-4601/20/12/6180" target="_blank" rel="noopener"
+          >Read the study</a
+        ></span
+      >
+    </div>
+  </div>
+</section>

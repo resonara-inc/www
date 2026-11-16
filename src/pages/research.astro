@@ -1,0 +1,161 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import BrainRhythms from "../components/BrainRhythms.astro";
+import FeaturedStudy from "../components/FeaturedStudy.astro";
+---
+
+<SiteLayout
+  title="The research | Resonara"
+  description="What the research says about singing-bowl sound, stress, mood and meditation, with a link to every study."
+  nav="research"
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">The research</span>
+      <h1>What singing-bowl sound does for stress, the body and the mind.</h1>
+      <p class="lede">
+        Researchers at universities around the world have measured what listening to singing bowls does for stress, heart rate variability, mood and the mind. Here is what they found, with every study
+        linked so you can read it yourself.
+      </p>
+      <div class="hero-stats">
+        <div><b>19</b><span>clinical studies</span></div>
+        <div><b>8</b><span>countries</span></div>
+        <div><b>9</b><span>randomized controlled trials</span></div>
+      </div>
+      <div class="toc">
+        <a href="#featured-study" class="chip-btn">Featured study</a>
+        <a href="#outcome-stress" class="chip-btn">Stress and the body</a>
+        <a href="#outcome-mood" class="chip-btn">Mood and tension</a>
+        <a href="#outcome-brain" class="chip-btn">Meditation and brain state</a>
+        <a href="#big-picture" class="chip-btn">The big picture</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-tight">
+    <div class="wrap">
+      <div id="featured-study" style="scroll-margin-top:90px"><FeaturedStudy full /></div>
+
+      <div class="outcome" id="outcome-stress" style="scroll-margin-top:90px;margin-top:clamp(40px,5vw,64px)">
+        <div class="outcome-head">
+          <h2>Stress and the body</h2>
+          <p>Singing-bowl sound eased anxiety and switched on the body's rest-and-recover response, seen in heart rate, blood pressure and heart rate variability (HRV).</p>
+        </div>
+        <div class="study-grid">
+          <article class="study" id="study-rio">
+            <span class="who">Austral University of Chile · Universitat Autònoma de Barcelona</span>
+            <h3>Rio-Alamos et al., 2023</h3>
+            <p>HRV rose 37% by minute 30, significantly above both comparison groups at 30–45 minutes. Anxiety fell 21%.</p>
+            <p class="design">Registered, single-blind randomized controlled trial · 50 adults with high everyday anxiety</p>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9955072/" target="_blank" rel="noopener">Read the study →</a>
+          </article>
+          <article class="study" id="study-landry">
+            <span class="who">American Journal of Health Promotion</span>
+            <h3>Landry, 2014</h3>
+            <p>Heart rate and systolic blood pressure fell more when a singing bowl was played before a guided relaxation than when the relaxation began in silence.</p>
+            <p class="design">Randomized crossover · 51 adults, each doing both sessions</p>
+            <a href="https://journals.sagepub.com/doi/10.4278/ajhp.121031-ARB-528" target="_blank" rel="noopener">Read the study →</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="outcome" id="outcome-mood" style="scroll-margin-top:90px">
+        <div class="outcome-head"><h2>Mood and tension</h2><p>One session, measurable change in how people feel.</p></div>
+        <div class="study-grid">
+          <article class="study" id="study-goldsby">
+            <span class="who">UC San Diego</span>
+            <h3>Goldsby et al., 2017</h3>
+            <p>Less tension, anger, fatigue and low mood after a single session. The biggest drop in tension came among people new to meditation.</p>
+            <p class="design">Observational, before and after · 62 adults · one 60-minute session</p>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5871151/" target="_blank" rel="noopener">Read the study →</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="outcome" id="outcome-brain" style="scroll-margin-top:90px">
+        <div class="outcome-head"><h2>Meditation and brain state</h2><p>Listening to a singing bowl shifted brain activity toward the slow rhythms of meditation and deep rest.</p></div>
+        <div class="study-grid">
+          <article class="study" id="study-kim">
+            <span class="who">Jeju National University</span>
+            <h3>Kim &amp; Choi, 2023</h3>
+            <p>
+              When people listened to a singing bowl, the biggest change in their brain activity came at exactly the bowl's own beat, 6.68 Hz, which rose about 2.5 times. That pace falls in the theta
+              range linked to meditation. Slow delta and theta activity rose, while faster alpha, beta and gamma activity fell.
+            </p>
+            <p class="design">Peer-reviewed EEG study · <i>International Journal of Environmental Research and Public Health</i>, 2023</p>
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10298245/" target="_blank" rel="noopener">Read the study →</a>
+          </article>
+          <article class="study" id="study-rio-eeg">
+            <span class="who">Same randomized trial · brain readings (EEG)</span>
+            <h3>Rio-Alamos et al., 2023</h3>
+            <p>
+              Alpha activity fell more with singing bowls than with silence across the session, and more than with muscle relaxation at minute 30. The researchers read this as listeners letting go of
+              their alertness to the room around them.
+            </p>
+            <p class="design">Registered randomized controlled trial · 50 adults · EEG at 0, 15, 30 and 45 minutes</p>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9955072/" target="_blank" rel="noopener">Read the study →</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <BrainRhythms id="brain-rhythms" />
+
+  <section class="band" id="big-picture" style="scroll-margin-top:70px">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">The big picture</span><h2>A growing body of research, and what it still needs.</h2></div>
+      <div class="study-grid" style="margin-top:0">
+        <article class="study" id="study-cai">
+          <span class="who">Western Sydney University · NICM Health Research Institute</span>
+          <h3>Cai et al., 2025 · systematic review</h3>
+          <p>
+            19 clinical studies, 9 of them randomized controlled trials, from 2008 to 2024 found potential benefits for anxiety, mood, sleep and cognition. Only 6 of the 19 added physical vibration to
+            the sound.
+          </p>
+          <p class="design"><i>Integrative Medicine Research</i>, vol. 14, 2025</p>
+          <a href="https://doi.org/10.1016/j.imr.2025.101144" target="_blank" rel="noopener">Read the review →</a>
+        </article>
+        <article class="study" id="study-healthcare">
+          <span class="who">Healthcare, 2025</span>
+          <h3>Systematic review of Tibetan bowls</h3>
+          <p>14 quantitative studies in adults reported psychological and physiological effects, including on HRV and brainwaves.</p>
+          <p class="design">Systematic review · 14 studies</p>
+          <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12385955/" target="_blank" rel="noopener">Read the review →</a>
+        </article>
+        <article class="study" id="study-stanhope">
+          <span class="who">University of Adelaide</span>
+          <h3>Stanhope &amp; Weinstein, 2020</h3>
+          <p>Studies reported improvements, but there were too few rigorous trials to recommend bowl therapies yet. We agree more research is needed, and we cite it for that reason.</p>
+          <p class="design">Systematic review</p>
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S096522991931756X" target="_blank" rel="noopener">Read the review →</a>
+        </article>
+        <article class="study">
+          <span class="who">On campus</span>
+          <h3>Sound baths at leading universities</h3>
+          <p>Sound baths are now held on campus at Carnegie Mellon, Duke and Stanford.</p>
+          <p class="design">Independent programs; Resonara is not affiliated with these institutions.</p>
+        </article>
+      </div>
+
+      <div class="claims" style="margin-top:clamp(40px,5vw,64px)">
+        <div class="fig">
+          <h3>What we claim</h3>
+          <ul>
+            <li>Singing-bowl sound can melt stress, switch on the body's rest-and-recover response and guide the mind toward the slow rhythms of meditation.</li>
+            <li>Every claim sits next to the study behind it.</li>
+            <li>Research cited here studied singing bowls, including Tibetan (Himalayan) bowls like ours, not Resonara's instrument itself.</li>
+          </ul>
+        </div>
+        <div class="fig">
+          <h3>What we don't claim</h3>
+          <ul>
+            <li>No disease or medical claims. Resonara is a wellness instrument, not a medical device.</li>
+            <li>No "healing frequencies" or chakra charts.</li>
+            <li>No Resonara-specific results until our own study reports.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

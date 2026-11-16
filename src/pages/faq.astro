@@ -1,0 +1,27 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Faq from "../components/Faq.astro";
+---
+
+<SiteLayout title="FAQ | Resonara" description="Answers to common questions about Resonara sessions, hosting the instrument, and safety." nav="faq">
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">FAQ</span>
+      <h1>Questions, answered.</h1>
+      <div class="toc">
+        <a href="#faq-general" class="chip-btn">General</a>
+        <a href="#faq-hosting" class="chip-btn">Hosting</a>
+        <a href="#faq-safety" class="chip-btn">Safety</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="faq-group" id="faq-general" style="scroll-margin-top:90px"><h2>General</h2><Faq group="general" /></div>
+      <div class="faq-group" id="faq-hosting" style="scroll-margin-top:90px"><h2>Hosting</h2><Faq group="hosting" /></div>
+      <div class="faq-group" id="faq-safety" style="scroll-margin-top:90px"><h2>Safety</h2><Faq group="safety" /></div>
+      <div class="row" style="margin-top:48px"><a href="/waitlist/" class="btn btn-primary">Join the waitlist</a></div>
+    </div>
+  </section>
+</SiteLayout>

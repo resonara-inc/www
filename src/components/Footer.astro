@@ -1,0 +1,63 @@
+---
+import ThemeSwitch from "./ThemeSwitch.astro";
+import { LEGAL_NAME, SOLUTIONS } from "../config/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="/" class="logo" aria-label="Resonara home"><span class="logo-mark"></span><span class="logo-word"></span></a>
+        <p>A live sound bath, on demand. Silence of mind. Science of sound.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="/how-it-works/">How it works</a></li>
+          <li><a href="/research/">The research</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Solutions</h2>
+        <ul>
+          {
+            SOLUTIONS.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+          <li><a href="/waitlist/">Join the waitlist</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/waitlist/">Contact</a></li>
+          <li><a href="/support/">App support</a></li>
+          <li><a href="/privacy/">Privacy policy</a></li>
+          <li><a href="/terms/">Terms of use</a></li>
+          <li><a href="/disclaimer/">Wellness disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>
+        Resonara sessions are designed for relaxation and general wellbeing. They are not a medical treatment and are not intended to diagnose, treat, cure or prevent any disease. Research cited on
+        this site is independent; it studied singing bowls, including Tibetan (Himalayan) singing bowls like ours, not Resonara's instrument itself.
+      </p>
+      <p class="only-us" hidden>
+        This device has not been authorized as required by the rules of the Federal Communications Commission. This device is not, and may not be, offered for sale or lease, or sold or leased, until
+        authorization is obtained.
+      </p>
+    </div>
+    <div class="foot-bar">
+      <p>US Patented Technology · Singapore and California, USA · © {year} {LEGAL_NAME}</p>
+      <ThemeSwitch />
+    </div>
+  </div>
+</footer>

@@ -38,3 +38,29 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Old URLs from the previous site design
+[[redirects]]
+  from = "/science"
+  to = "/research/"
+  status = 301
+
+[[redirects]]
+  from = "/story"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/symbol"
+  to = "/about/#symbol"
+  status = 301
+
+[[redirects]]
+  from = "/who-its-for"
+  to = "/#spaces"
+  status = 301
+
+[[redirects]]
+  from = "/partners"
+  to = "/waitlist/"
+  status = 301

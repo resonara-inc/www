@@ -1,0 +1,29 @@
+---
+import { whatsappLink } from "../config/contact";
+
+interface Props {
+  /** Stack the cards in a column (used beside the waitlist form) instead of a three-up row. */
+  stack?: boolean;
+}
+const { stack = false } = Astro.props;
+---
+
+<div class={stack ? "stack" : "locs"}>
+  <div class="loc">
+    <span class="status live">Live</span>
+    <h3>Singapore</h3>
+    <p class="muted small">Resonara Sanctuary at Akshaya Yoga.</p>
+    <a href={whatsappLink()} target="_blank" rel="noopener" class="link-arrow">Book a session →</a>
+  </div>
+  <div class="loc">
+    <span class="status">Coming soon</span>
+    <h3>California</h3>
+    <p class="muted small">Coming soon to California by the end of 2026.</p>
+  </div>
+  <div class="loc">
+    <span class="status">Your city</span>
+    <h3>Next</h3>
+    <p class="muted small">The waitlist tells us where to go after California.</p>
+    {!stack && <a href="/waitlist/" class="link-arrow">Join the waitlist →</a>}
+  </div>
+</div>

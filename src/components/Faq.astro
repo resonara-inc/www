@@ -1,0 +1,21 @@
+---
+import { FAQ, type FaqGroup } from "../data/faq";
+
+interface Props {
+  group: FaqGroup;
+}
+const { group } = Astro.props;
+---
+
+<div class="faq-list">
+  {
+    FAQ[group].map(([question, answer]) => (
+      <details>
+        <summary>{question}</summary>
+        <div class="ans">
+          <p>{answer}</p>
+        </div>
+      </details>
+    ))
+  }
+</div>

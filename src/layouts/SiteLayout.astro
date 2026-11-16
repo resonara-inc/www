@@ -1,0 +1,73 @@
+---
+import "../styles/site.css";
+import { getImage } from "astro:assets";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SpecModal from "../components/SpecModal.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import productImage from "../assets/site/product.jpg";
+import { FEATURES, SITE_NAME } from "../config/site";
+
+interface Props {
+  /** Full document title, e.g. "About us | Resonara". */
+  title: string;
+  description: string;
+  /** Active header section: "how-it-works", "research", "solutions", "about" or "faq". */
+  nav?: string;
+  /** Keep the page out of search results and the canonical/OG tags (404). */
+  noindex?: boolean;
+  /** Extra JSON-LD structured data for this page. */
+  jsonLd?: Record<string, unknown>;
+}
+const { title, description, nav, noindex = false, jsonLd } = Astro.props;
+
+const site = Astro.site ?? new URL("https://resonara.com");
+const pathname = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(pathname, site).href;
+const ogImage = new URL((await getImage({ src: productImage, width: 1200, format: "jpg" })).src, site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="The Resonara instrument: three bronze bowls on a solid teak cabinet" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)" data-scheme="light" />
+    <meta name="theme-color" content="#1B1B18" media="(prefers-color-scheme: dark)" data-scheme="dark" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />}
+    <!-- Apply a stored light/dark choice before first paint. Without one, the CSS follows the system setting. -->
+    <script is:inline>
+      try {
+        var theme = localStorage.getItem("theme");
+        if (theme === "light" || theme === "dark") document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header nav={nav} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <SpecModal />
+    {FEATURES.floatingWhatsApp && <WhatsAppButton />}
+    <div class="toast" id="toast" role="status" hidden></div>
+    <script>
+      import { applyVisitor } from "../scripts/visitor";
+      applyVisitor();
+    </script>
+  </body>
+</html>

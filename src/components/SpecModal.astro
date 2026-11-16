@@ -1,0 +1,99 @@
+---
+/**
+ * "Get the spec sheet" dialog. Any element with `data-spec` opens it.
+ * It is a native <dialog> opened with showModal(), so the browser keeps keyboard focus inside it, closes it on Escape,
+ * and returns focus to the button that opened it.
+ * Requests are stored by Netlify Forms under the name "spec-sheet"; the sheet itself is emailed by the team.
+ */
+---
+
+<dialog class="modal" id="spec-modal" aria-labelledby="spec-title">
+  <div class="modal-card">
+    <h2 id="spec-title">Get the spec sheet</h2>
+    <div id="spec-ask" class="stack">
+      <p class="muted small">
+        Dimensions, power, materials and care, as a PDF. We'll email it to you, and someone from our team may get in touch to walk you through it and answer any questions.
+      </p>
+      <form id="spec-form" name="spec-sheet" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="stack">
+        <input type="hidden" name="form-name" value="spec-sheet" />
+        <input type="hidden" name="page" value={Astro.url.pathname} />
+        <input type="hidden" name="subject" value="Spec sheet request" />
+        <p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="field"><label for="spec-email">Work email</label><input id="spec-email" name="email" type="email" required autocomplete="email" /></div>
+        <label class="consent" for="spec-consent">
+          <input type="checkbox" id="spec-consent" name="consent" value="yes" /><span>Send me occasional news about Resonara. Unsubscribe any time.</span>
+        </label>
+        <div class="row">
+          <button type="submit" class="btn btn-primary">Email me the spec sheet</button>
+          <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+        </div>
+        <p class="form-error small" role="alert" hidden></p>
+      </form>
+    </div>
+    <div id="spec-done" class="stack" hidden>
+      <p>Thank you. The spec sheet is on its way to <strong id="spec-sent-to"></strong>.</p>
+      <p class="muted small">Someone from our team may also reach out to walk you through it and share more details about bringing Resonara to your space.</p>
+      <div class="row"><button type="button" class="btn btn-primary" data-close-modal>Done</button></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  import { CONTACT_EMAIL } from "../config/site";
+  import { submitNetlifyForm } from "../scripts/netlify-form";
+
+  const modal = document.getElementById("spec-modal") as HTMLDialogElement | null;
+  const ask = document.getElementById("spec-ask");
+  const done = document.getElementById("spec-done");
+  const form = document.getElementById("spec-form") as HTMLFormElement | null;
+  const email = document.getElementById("spec-email") as HTMLInputElement | null;
+  const sentTo = document.getElementById("spec-sent-to");
+  const error = form?.querySelector<HTMLElement>(".form-error");
+  const submit = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+  if (modal && ask && done && form && email && sentTo && error && submit) {
+    form.noValidate = true; // Validation messages are shown in the page's own style.
+
+    const fail = (message: string) => {
+      error.textContent = message;
+      error.hidden = false;
+    };
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) return;
+      if (event.target.closest("[data-spec]")) {
+        ask.hidden = false;
+        done.hidden = true;
+        error.hidden = true;
+        modal.showModal();
+        email.focus();
+      } else if (event.target === modal || event.target.closest("#spec-modal [data-close-modal]")) {
+        // A click on the dialog element itself is a click on the dimmed area around the card.
+        modal.close();
+      }
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!email.value.trim() || !email.checkValidity()) {
+        fail("Enter a valid email to get the spec sheet.");
+        email.focus();
+        return;
+      }
+      error.hidden = true;
+      submit.disabled = true;
+      try {
+        await submitNetlifyForm(form);
+        sentTo.textContent = email.value.trim();
+        form.reset();
+        ask.hidden = true;
+        done.hidden = false;
+        done.querySelector<HTMLElement>("[data-close-modal]")?.focus();
+      } catch {
+        fail(`Sorry, we couldn't send that. Please try again, or email ${CONTACT_EMAIL}.`);
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
+</script>

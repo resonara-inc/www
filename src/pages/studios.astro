@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import Faq from "../components/Faq.astro";
+import ProofBand from "../components/ProofBand.astro";
+import WaitlistForm from "../components/WaitlistForm.astro";
+import yogaImage from "../assets/site/yoga.jpg";
+---
+
+<SiteLayout
+  title="For yoga studios | Resonara"
+  description="A live singing-bowl sound bath for Nada Yoga, Shavasana, breathwork and Yoga Nidra. A class your members come back for."
+  nav="solutions"
+>
+  <section class="page-hero">
+    <div class="wrap sol-hero">
+      <div class="sol-copy">
+        <span class="eyebrow">For yoga studios</span>
+        <h1>A class your members come back for, and no studio nearby can offer.</h1>
+        <p class="lede">
+          Add Nada Yoga, the yoga of sound, to your schedule, played live on real bowls. As an introductory offer, partner studios get local exclusivity from us for a limited time.
+        </p>
+        <div class="row">
+          <a href="/waitlist/?seg=studio" class="btn btn-primary">Join the waitlist</a><button type="button" class="btn btn-ghost" data-spec>Download the spec sheet</button>
+        </div>
+      </div>
+      <Image
+        src={yogaImage}
+        alt="A yoga class resting in Shavasana around the Resonara instrument, with a teacher seated beside it"
+        class="hero-img"
+        widths={[480, 800, 1200]}
+        sizes="(max-width: 860px) 100vw, 540px"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="benefits">
+        <div class="benefit">
+          <h2>Stand out on your street</h2>
+          <p>A live sound bath on your timetable, any day of the week. As an introductory offer, partner studios are the only ones in their area offering it for a limited time.</p>
+        </div>
+        <div class="benefit">
+          <h2>Your class, your teachers</h2>
+          <p>Sessions can be led by you, your teachers or a visiting sound therapist. Resonara holds the sound, played the same way every time, whoever is teaching.</p>
+        </div>
+        <div class="benefit">
+          <h2>A format members return for</h2>
+          <p>Sound-led Shavasana, Yoga Nidra, restorative and yin classes give members a reason to book again, and give you a class to offer on its own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-tight band-surface" style="border-block:1px solid var(--line)">
+    <div class="wrap split">
+      <div class="stack">
+        <span class="eyebrow" style="margin:0">Where it fits</span>
+        <h2>Built into the classes you already teach.</h2>
+        <p class="muted">Each program comes in preset lengths, from a short close to Shavasana to a full class.</p>
+      </div>
+      <ul class="fits" style="align-content:center">
+        <li>Nada Yoga</li>
+        <li>Shavasana</li>
+        <li>Breathwork</li>
+        <li>Yoga Nidra</li>
+        <li>Group classes</li>
+        <li>Restorative</li>
+        <li>Yin</li>
+        <li>Workshops</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">How the partnership works</span><h2>We handle the instrument. You run the class.</h2></div>
+      <ol class="flow">
+        <li><b>We install</b><p>We place and calibrate the instrument in your studio.</p></li>
+        <li><b>You schedule</b><p>Choose programs and preset lengths in the app for any class.</p></li>
+        <li><b>We maintain</b><p>Servicing, calibration, updates and bowl care. It can move between your rooms on castors.</p></li>
+      </ol>
+      <ProofBand />
+    </div>
+  </section>
+
+  <section class="band band-surface" style="border-top:1px solid var(--line)">
+    <div class="wrap split">
+      <div class="section-head" style="margin:0"><span class="eyebrow">Studio questions</span><h2>What studio owners ask first.</h2></div>
+      <Faq group="studio" />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head"><h2>Bring Resonara to your studio.</h2></div>
+      <WaitlistForm id="studios" segment="studio" />
+    </div>
+  </section>
+</SiteLayout>
