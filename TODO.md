@@ -17,7 +17,7 @@ Open items from the November 2026 redesign port and site audit, updated with the
 ## Waiting for version 1 material
 
 - [ ] Real photographs and footage of the instrument in a venue, to replace the renders.
-- [ ] A hero film cut that opens on the instrument instead of city traffic, with no email address on its end frame.
+- [ ] A hero film cut that opens on the instrument instead of city traffic, with no email address on its end frame. The current film also carries the captions "Sound, that heals." and "Automated Himalayan Singing Bowl Therapy", which go against the site's "not a medical treatment" stance. When the film changes, re-encode the phone version too (`src/assets/site/hero-mobile.mp4`, 640 px wide).
 - [ ] A mallet graphic that shows two mallets per bowl (confirmed correct for the shipping unit); the current one shows one per bowl.
 - [ ] FAQ additions from the questions venues actually ask.
 - [ ] Revisit the cabinet image's line that the felt "completely soundproofs the device" (kept for now); the FAQ says "quiet by design".
@@ -37,6 +37,7 @@ Open items from the November 2026 redesign port and site audit, updated with the
 
 ## Privacy
 
+- [ ] Cloudflare Web Analytics (cookie-free, alongside Firebase): switch it on in the Cloudflare dashboard under Web Analytics → Add a site → resonara.com. No code change is needed; Cloudflare adds its script to the pages.
 - [ ] Analytics sets Google Analytics cookies for every visitor without asking. Decide whether visitors in the EU and UK need a consent prompt before it loads, and have counsel confirm the privacy policy covers it.
 
 ## Cloudflare caching
@@ -54,6 +55,7 @@ How it is set up:
   - Browser TTL: Respect origin
 - Cloudflare dashboard, Caching → Tiered Cache: Smart Tiered Caching is on.
 - The 5 minutes comes from the site because the free Cloudflare plan cannot set a fixed Edge TTL under 2 hours.
+- Pages also carry `stale-if-error` for 7 days: if Netlify answers with a 5xx error, Cloudflare keeps serving the copy it has. Tested on the live site with a temporary endpoint that returned 503: Cloudflare served the earlier response, marked `STALE`.
 - Checked on the live site the same day: a page is a cache miss, then a hit, and is re-checked with Netlify once it is 5 minutes old. The video, CSS, scripts, images and favicon are cache hits; a form POST is not cached.
 
 What to know:
@@ -62,6 +64,8 @@ What to know:
 - The rule matches paths ending in `/`, so every page URL must keep its trailing slash to be cached.
 - Form submissions are not cached; Cloudflare only caches page loads.
 - A new file in `public/` gets the 5-minute edge lifetime unless it has its own rule in `netlify.toml`.
+- Keep "Always Online" switched off in Cloudflare; when it is on, `stale-if-error` is ignored.
+- `stale-if-error` only covers 5xx errors and pages Cloudflare already holds. It is untested whether a site paused by Netlify (for example at a legacy-plan limit) answers with a 5xx.
 
 Open items:
 
@@ -71,7 +75,6 @@ Open items:
 
 ## Performance
 
-- [ ] Lighten the hero film (3.8 MB on every home visit): a smaller phone encode, or load it only when the visitor presses play.
 - [ ] Replace the two PNG logo masks with an SVG if a vector source exists.
 
 ## Layout
