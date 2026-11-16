@@ -39,6 +39,36 @@ Open items from the November 2026 redesign port and site audit, updated with the
 
 - [ ] Analytics sets Google Analytics cookies for every visitor without asking. Decide whether visitors in the EU and UK need a consent prompt before it loads, and have counsel confirm the privacy policy covers it.
 
+## Cloudflare caching
+
+Set up on 16 November 2026. Part of it lives in the Cloudflare dashboard, not in this repo, so it is recorded here.
+
+How it is set up:
+
+- resonara.com is proxied through Cloudflare, with Netlify as the origin.
+- `netlify.toml` sends `Cloudflare-CDN-Cache-Control` to tell Cloudflare how long to keep each response: 5 minutes for pages, one year for everything under `/_astro/` (video, CSS, scripts, fonts, images), one week for `/favicon.png`. Cloudflare strips this header, so browsers only see the normal `Cache-Control`.
+- Cloudflare dashboard, Caching → Cache Rules: one rule makes pages eligible for cache.
+  - Expression: `(http.host eq "resonara.com" and ends_with(http.request.uri.path, "/"))`
+  - Cache eligibility: Eligible for cache
+  - Edge TTL: "Use cache-control header if present, bypass cache if not"
+  - Browser TTL: Respect origin
+- Cloudflare dashboard, Caching → Tiered Cache: Smart Tiered Caching is on.
+- The 5 minutes comes from the site because the free Cloudflare plan cannot set a fixed Edge TTL under 2 hours.
+- Checked on the live site the same day: a page is a cache miss, then a hit, and is re-checked with Netlify once it is 5 minutes old. The video, CSS, scripts, images and favicon are cache hits; a form POST is not cached.
+
+What to know:
+
+- After a deploy, a page can be up to 5 minutes old. To show a change at once, use Caching → Configuration → Purge Everything in Cloudflare.
+- The rule matches paths ending in `/`, so every page URL must keep its trailing slash to be cached.
+- Form submissions are not cached; Cloudflare only caches page loads.
+- A new file in `public/` gets the 5-minute edge lifetime unless it has its own rule in `netlify.toml`.
+
+Open items:
+
+- [ ] Purge Cloudflare automatically after each Netlify deploy, so a fresh deploy is never served alongside 5-minute-old pages. Needs a Cloudflare API token.
+- [ ] `/sitemap.xml` is not cached by Cloudflare (not a page, not a default cached type). Harmless; add it to the Cache Rule if wanted.
+- [ ] Remove the unused `/assets/*` and `/*.html` header rules from `netlify.toml` once it is confirmed nothing relies on them.
+
 ## Performance
 
 - [ ] Lighten the hero film (3.8 MB on every home visit): a smaller phone encode, or load it only when the visitor presses play.
