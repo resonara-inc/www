@@ -8,6 +8,7 @@ import WaitlistForm from "../components/WaitlistForm.astro";
 import { whatsappLink } from "../config/contact";
 import { CONTACT_EMAIL, LEGAL_NAME, SITE_NAME, SITE_TAGLINE } from "../config/site";
 import heroVideo from "../assets/site/hero.mp4";
+import heroVideoSmall from "../assets/site/hero-mobile.mp4";
 import posterImage from "../assets/site/poster.jpg";
 import productImage from "../assets/site/product.jpg";
 import detailImage from "../assets/site/detail.jpg";
@@ -69,12 +70,12 @@ const stripSizes = "(max-width: 700px) 100vw, 380px";
               muted
               loop
               playsinline
-              preload="metadata"
+              preload="none"
               poster={poster.src}
+              data-src={heroVideo}
+              data-src-small={heroVideoSmall}
               aria-label="Resonara intro film: real singing bowls played live in a studio, a spa and a workplace"
-            >
-              <source src={heroVideo} type="video/mp4" />
-            </video>
+            ></video>
             <button type="button" class="vs-btn vs-sound" id="hero-sound" aria-pressed="false">Sound on</button>
             <button type="button" class="vs-btn vs-pause" id="hero-pause" aria-pressed="false">Pause</button>
           </div>
@@ -238,7 +239,10 @@ const stripSizes = "(max-width: 700px) 100vw, 380px";
 <script>
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Hero film: autoplays muted; the two buttons toggle sound and playback ---------- */
+  /* ---------- Hero film: autoplays muted; the two buttons toggle sound and playback ----------
+     The script picks the file: a 640 px encode (about 1.6 MB) on phones, the 720p one (about 3.8 MB) elsewhere.
+     Nothing is downloaded until playback starts, and it does not start by itself for visitors who asked for
+     reduced motion or have data saver on; they see the poster and can press Play. */
   const video = document.getElementById("hero-video") as HTMLVideoElement | null;
   const soundBtn = document.getElementById("hero-sound");
   const pauseBtn = document.getElementById("hero-pause");
@@ -250,7 +254,11 @@ const stripSizes = "(max-width: 700px) 100vw, 380px";
     };
     const play = () => video.play().catch(() => showPaused(true));
 
-    if (reduceMotion) showPaused(true);
+    const phone = window.matchMedia("(max-width: 600px)").matches;
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true;
+    video.src = (phone ? video.dataset.srcSmall : video.dataset.src) ?? "";
+
+    if (reduceMotion || saveData) showPaused(true);
     else play();
 
     video.addEventListener("pause", () => showPaused(true));
