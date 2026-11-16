@@ -5,11 +5,25 @@
 [build.environment]
   NODE_VERSION = "24"
 
+# How long Cloudflare, which sits in front of Netlify, keeps a response at its edge.
+# Cloudflare reads Cloudflare-CDN-Cache-Control, uses it instead of Cache-Control, and strips it before
+# the response reaches the visitor, so browsers are unaffected.
+#
+# Pages: 5 minutes. This only takes effect because a Cloudflare Cache Rule makes paths ending in "/"
+# eligible for cache with "Use cache-control header if present" (the free plan cannot set a fixed edge TTL
+# under 2 hours). After a deploy, a page can therefore be up to 5 minutes old.
+# This catch-all comes first; the more specific rules below set their own, longer value.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cloudflare-CDN-Cache-Control = "max-age=300"
+
 # Hashed assets (JS, CSS, images processed by Astro) — cache forever, no revalidation
 [[headers]]
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Cloudflare-CDN-Cache-Control = "max-age=31536000"
 
 # Legacy /assets/* path — same immutable rule
 [[headers]]
@@ -24,6 +38,7 @@
   for = "/favicon.png"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+    Cloudflare-CDN-Cache-Control = "max-age=604800"
 
 # HTML — short cache, revalidate is fine here since content can change
 [[headers]]
