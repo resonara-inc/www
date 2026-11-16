@@ -66,8 +66,10 @@ const ogImage = new URL((await getImage({ src: productImage, width: 1200, format
     {FEATURES.floatingWhatsApp && <WhatsAppButton />}
     <div class="toast" id="toast" role="status" hidden></div>
     <script>
+      import { initAnalytics } from "../scripts/analytics";
       import { applyVisitor } from "../scripts/visitor";
       applyVisitor();
+      initAnalytics();
     </script>
   </body>
 </html>

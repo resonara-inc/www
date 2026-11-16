@@ -8,6 +8,7 @@ The marketing site for Resonara: a static Astro site, hosted on Netlify.
 - Plain CSS in one stylesheet, `src/styles/site.css`, driven by design tokens
 - Self-hosted fonts via Fontsource (Marcellus, Hanken Grotesk, IBM Plex Mono)
 - Netlify hosting and Netlify Forms
+- Firebase Analytics
 
 ## Local development
 
@@ -56,6 +57,15 @@ Two forms post to Netlify Forms, submitted in the background by `src/scripts/net
 Each form carries a hidden `subject` field, which Netlify uses as the subject of its notification email; the waitlist script fills in the venue type and place before sending. A subject set in the form markup overrides one set in the Netlify UI.
 
 Form detection must be enabled for the site in Netlify (Forms → Enable form detection), and notifications are configured there. Submissions only work on a Netlify deploy, not on the local dev server.
+
+## Analytics
+
+Firebase Analytics (Google Analytics 4, project `resonara-web`) is loaded by `src/scripts/analytics.ts` once the page is idle. It runs only on the hosts listed in `src/config/firebase.ts` (resonara.com), so local work and deploy previews are not counted.
+
+- Page views are recorded automatically on every page load.
+- A successful waitlist or spec-sheet submission records a `generate_lead` event with the form, venue type, country and page. No names or email addresses are sent.
+- Use `track(name, params)` from `src/scripts/analytics.ts` for further events.
+- To try it locally, build or run with `PUBLIC_ANALYTICS_DEBUG=true`. Hits then go to the real property, so use it sparingly.
 
 ## Feature flags
 

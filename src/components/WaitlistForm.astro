@@ -75,6 +75,7 @@ const otherCountries = COUNTRIES.filter((country) => !(TOP_COUNTRIES as readonly
 
 <script>
   import { CONTACT_EMAIL, SEGMENTS } from "../config/site";
+  import { track } from "../scripts/analytics";
   import { submitNetlifyForm } from "../scripts/netlify-form";
   import { toast } from "../scripts/toast";
   import { guessVisitor, VISITOR_COUNTRY } from "../scripts/visitor";
@@ -133,6 +134,10 @@ const otherCountries = COUNTRIES.filter((country) => !(TOP_COUNTRIES as readonly
         fail(`Sorry, we couldn't save that. Please try again, or email ${CONTACT_EMAIL}.`);
         return;
       }
+
+      // No personal details: only the venue type, country and which page's form was used.
+      const source = (form.elements.namedItem("source") as HTMLInputElement).value;
+      void track("generate_lead", { form: "waitlist", venue_type: segment.value, country: country.value, form_location: source });
 
       const confirm = template?.content.firstElementChild?.cloneNode(true) as HTMLElement | undefined;
       if (!confirm) return;

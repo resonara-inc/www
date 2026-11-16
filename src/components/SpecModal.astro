@@ -40,6 +40,7 @@
 
 <script>
   import { CONTACT_EMAIL } from "../config/site";
+  import { track } from "../scripts/analytics";
   import { submitNetlifyForm } from "../scripts/netlify-form";
 
   const modal = document.getElementById("spec-modal") as HTMLDialogElement | null;
@@ -84,6 +85,7 @@
       submit.disabled = true;
       try {
         await submitNetlifyForm(form);
+        void track("generate_lead", { form: "spec_sheet", form_location: location.pathname });
         sentTo.textContent = email.value.trim();
         form.reset();
         ask.hidden = true;

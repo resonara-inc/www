@@ -35,6 +35,10 @@ Open items from the November 2026 redesign port and site audit, updated with the
 
 - [ ] Terms still say they are governed by the laws of England and Wales. The company name is now Resonara Wellness Pte. Ltd. in both privacy and terms; counsel should confirm the governing law and review the waitlist section added to the privacy policy.
 
+## Privacy
+
+- [ ] Analytics sets Google Analytics cookies for every visitor without asking. Decide whether visitors in the EU and UK need a consent prompt before it loads, and have counsel confirm the privacy policy covers it.
+
 ## Performance
 
 - [ ] Lighten the hero film (3.8 MB on every home visit): a smaller phone encode, or load it only when the visitor presses play.
