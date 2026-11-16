@@ -8,6 +8,8 @@ interface Props {
   full?: boolean;
 }
 const { full = false } = Astro.props;
+// On the research page this card sits directly under the page title; on the home page it is inside a section.
+const Heading = full ? "h2" : "h3";
 
 // HRV (RMSSD, ms) at 0, 15, 30 and 45 minutes.
 const minutes = [0, 15, 30, 45];
@@ -32,7 +34,7 @@ const gridValues = [25, 30, 35, 40, 45, 50];
 <div class="featured" style={full ? "margin-top:0" : undefined}>
   <div class="stack" style="gap:0">
     <span class="eyebrow">Featured study</span>
-    <h3>One session. Measurable calm.</h3>
+    <Heading>One session. Measurable calm.</Heading>
     <p class="muted">
       In a 2023 randomized controlled trial, a single live singing-bowl session raised heart rate variability by 37% and cut anxiety by 21%, a stronger relaxation response than progressive muscle
       relaxation.
