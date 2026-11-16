@@ -12,11 +12,15 @@
 # Pages: 5 minutes. This only takes effect because a Cloudflare Cache Rule makes paths ending in "/"
 # eligible for cache with "Use cache-control header if present" (the free plan cannot set a fixed edge TTL
 # under 2 hours). After a deploy, a page can therefore be up to 5 minutes old.
+#
+# stale-if-error: if Netlify answers with a 5xx error, Cloudflare keeps serving the copy it already has for
+# up to 7 days instead of showing the error. It only helps for pages Cloudflare has cached, and it is ignored
+# if "Always Online" is switched on in Cloudflare.
 # This catch-all comes first; the more specific rules below set their own, longer value.
 [[headers]]
   for = "/*"
   [headers.values]
-    Cloudflare-CDN-Cache-Control = "max-age=300"
+    Cloudflare-CDN-Cache-Control = "max-age=300, stale-if-error=604800"
 
 # Hashed assets (JS, CSS, images processed by Astro) — cache forever, no revalidation
 [[headers]]
